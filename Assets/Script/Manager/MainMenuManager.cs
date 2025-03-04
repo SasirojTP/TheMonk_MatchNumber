@@ -4,24 +4,60 @@ using UnityEngine.UI;
 public class MainMenuManager : MonoBehaviour
 {
     public static MainMenuManager inst;
+    [Header("MainMenu")]
     [SerializeField] Canvas Canvas_MainMenu;
+    [SerializeField] Button BT_Play;
+    [SerializeField] Button BT_Trophy;
+    [SerializeField] Button BT_Setting;
+
+    [Header("SelectLevel")]
+    [SerializeField] Canvas Canvas_SelectLevel;
     [SerializeField] Button BT_Easy;
     [SerializeField] Button BT_Normal;
     [SerializeField] Button BT_Hard;
-    [SerializeField] Button BT_Quit;
+
+    [Header("GamePlay")]
+    [SerializeField] Canvas Canvas_GamePlay;
+    [SerializeField] Button SelectLevel_BT_Back;
+
+    [Header("Settings")]
+    [SerializeField] Canvas Canvas_Settings;
+    [SerializeField] Button Settings_BT_Back;
+
+    [Header("ScoreBoard")]
+    [SerializeField] Canvas Canvas_ScoreBoard;
+    [SerializeField] Button ScoreBoard_BT_Back;
 
     private void Start()
     {
         inst = this;
+        HideUI();
         AddListenerTOBT();
+    }
+
+    void HideUI()
+    {
+        Canvas_SelectLevel.gameObject.SetActive(false);
+        Canvas_GamePlay.gameObject.SetActive(false);
+        Canvas_Settings.gameObject.SetActive(false);
+        Canvas_ScoreBoard.gameObject.SetActive(false);
     }
 
     void AddListenerTOBT()
     {
-        BT_Easy.onClick.AddListener(GoToLevel1);
-        BT_Normal.onClick.AddListener(GoToLevel2);
-        BT_Hard.onClick.AddListener(GoToLevel3);
-        BT_Quit.onClick.AddListener(OnClickBT_Quit);
+        BT_Play.onClick.AddListener(OnClickBT_Play);
+        BT_Trophy.onClick.AddListener(OnClickBT_Trophy);
+        BT_Setting.onClick.AddListener(OnClickBT_Setting);
+
+        BT_Easy.onClick.AddListener(OnClickBT_Easy);
+        BT_Normal.onClick.AddListener(OnClickBT_Normal);
+        BT_Hard.onClick.AddListener(OnClickBT_Hard);
+
+        SelectLevel_BT_Back.onClick.AddListener(OnClickSelectLevel_BT_Back);
+
+        Settings_BT_Back.onClick.AddListener(OnClickSettings_BT_Back);
+
+        ScoreBoard_BT_Back.onClick.AddListener(OnClickScoreBoard_BT_Back);
     }
 
     public void GoToMainMenu()
@@ -29,23 +65,63 @@ public class MainMenuManager : MonoBehaviour
         Canvas_MainMenu.gameObject.SetActive(true);
     }
 
-    void GoToLevel1()
+    void OnClickBT_Play()
     {
         Canvas_MainMenu.gameObject.SetActive(false);
+        Canvas_SelectLevel.gameObject.SetActive(true);
+    }
+    void OnClickBT_Trophy()
+    {
+        Canvas_MainMenu.gameObject.SetActive(false);
+        Canvas_ScoreBoard.gameObject.SetActive(true);
+    }
+    void OnClickBT_Setting()
+    {
+        Canvas_MainMenu.gameObject.SetActive(false);
+        Canvas_Settings.gameObject.SetActive(true);
+    }
+
+    void OnClickBT_Easy()
+    {
+        Canvas_MainMenu.gameObject.SetActive(false);
+        Canvas_SelectLevel.gameObject.SetActive(false);
+        Canvas_GamePlay.gameObject.SetActive(true);
         GameManager.inst.StartGame(GameManager.GameMode.Easy);
     }
-    void GoToLevel2()
+    void OnClickBT_Normal()
     {
         Canvas_MainMenu.gameObject.SetActive(false);
+        Canvas_SelectLevel.gameObject.SetActive(false);
+        Canvas_GamePlay.gameObject.SetActive(true);
         GameManager.inst.StartGame(GameManager.GameMode.Normal);
     }
-    void GoToLevel3()
+    void OnClickBT_Hard()
     {
         Canvas_MainMenu.gameObject.SetActive(false);
+        Canvas_SelectLevel.gameObject.SetActive(false);
+        Canvas_GamePlay.gameObject.SetActive(true);
         GameManager.inst.StartGame(GameManager.GameMode.Hard);
     }
-    void OnClickBT_Quit()
+
+    void OnClickSelectLevel_BT_Back()
     {
-        Application.Quit();
+        Canvas_SelectLevel.gameObject.SetActive(false);
+        Canvas_MainMenu.gameObject.SetActive(true);
     }
+
+    void OnClickSettings_BT_Back()
+    {
+        Canvas_Settings.gameObject.SetActive(false);
+        Canvas_MainMenu.gameObject.SetActive(true);
+    }
+
+    void OnClickScoreBoard_BT_Back()
+    {
+        Canvas_ScoreBoard.gameObject.SetActive(false);
+        Canvas_MainMenu.gameObject.SetActive(true);
+    }
+    //void OnClickBT_Quit()
+    //{
+    //    Application.Quit();
+    //}
 }

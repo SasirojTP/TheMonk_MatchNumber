@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 61351d2e93f8d7d4e986af7e4fca870f
+guid: 429a65c77c7bc734fbbb7acc7b6e082a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1769403625533518057
-    second: ICON_Mute_0
+      213: 6167380071509131246
+    second: EggyLogo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ICON_Mute_0
+      name: EggyLogo_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 256
+        width: 225
+        height: 225
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 71f49cbf6c0d177e0800000000000000
-      internalID: -1769403625533518057
+      spriteID: eefff15bf7fe69550800000000000000
+      internalID: 6167380071509131246
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ICON_Mute_0: -1769403625533518057
+      EggyLogo_0: 6167380071509131246
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

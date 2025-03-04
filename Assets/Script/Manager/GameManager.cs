@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] InputGroup GRP_InputGroup_1;
 
     [SerializeField] TextMeshProUGUI GamePlay_TEXT_Score;
-    [SerializeField] Button BT_Setting;
+    [SerializeField] Button GamePlay_BT_Back;
+    [SerializeField] Button GamePlay_BT_Pause;
 
     [Header("Finish")]
     [SerializeField] Canvas Canvas_Finish;
@@ -30,15 +31,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button Finish_BT_Restart;
     [SerializeField] Button Finish_BT_MainMenu;
 
-    [Header("Settings")]
-    [SerializeField] Canvas Canvas_Settings;
-    [SerializeField] Button Settings_BT_SetSound;
-    [SerializeField] Image Settings_IMG_SetSound;
+    [SerializeField] Button Finish_BT_Trophy;
+    [SerializeField] Canvas Canvas_ScoreBoard;
+
+    [Header("Pause")]
+    [SerializeField] Canvas Canvas_Pause;
+    [SerializeField] Button Pause_BT_SetSound;
+    [SerializeField] Image Pause_IMG_SetSound;
     [SerializeField] Sprite ICON_Mute;
     [SerializeField] Sprite ICON_UnMute;
-    [SerializeField] Button Settings_BT_Back;
-    [SerializeField] Button Settings_BT_Restart;
-    [SerializeField] Button Settings_BT_MainMenu;
+    [SerializeField] Button Pause_BT_Back;
+    [SerializeField] Button Pause_BT_Restart;
+    [SerializeField] Button Pause_BT_MainMenu;
 
     public enum GameMode { Easy , Normal , Hard};
     [Header("Logic")]
@@ -58,22 +62,31 @@ public class GameManager : MonoBehaviour
         GRP_GameSlotList_RectTransform = GRP_GameSlotList.GetComponent<RectTransform>();
 
         Canvas_GamePlay.gameObject.SetActive(false);
-        Canvas_Settings.gameObject.SetActive(false);
+        Canvas_Pause.gameObject.SetActive(false);
         Canvas_Finish.gameObject.SetActive(false);
         AddListenerToBT();
+        HideUI();
     }
 
     void AddListenerToBT()
     {
+        GamePlay_BT_Back.onClick.AddListener(OnClickGamePlay_BT_Back);
+        GamePlay_BT_Pause.onClick.AddListener(OnClickGamePlay_BT_Pause);
 
-        BT_Setting.onClick.AddListener(OnClickBTSettings);
-        Settings_BT_SetSound.onClick.AddListener(OnClickSetSound);
-        Settings_BT_Back.onClick.AddListener(OnClickBTBack);
-        Settings_BT_Restart.onClick.AddListener(OnClickBTRestart);
-        Settings_BT_MainMenu.onClick.AddListener(OnClickBT_MainMenu);
+        Pause_BT_SetSound.onClick.AddListener(OnClickSetSound);
+        Pause_BT_Back.onClick.AddListener(OnClickBTBack);
+        Pause_BT_Restart.onClick.AddListener(OnClickBTRestart);
+        Pause_BT_MainMenu.onClick.AddListener(OnClickBT_MainMenu);
 
         Finish_BT_Restart.onClick.AddListener(OnClickBTRestart);
         Finish_BT_MainMenu.onClick.AddListener(OnClickBT_MainMenu);
+        Finish_BT_Trophy.onClick.AddListener(OnClickFinish_BT_Trophy);
+    }
+    void HideUI()
+    {
+        Canvas_GamePlay.gameObject.SetActive(false);
+        Canvas_Finish.gameObject.SetActive(false);
+        Canvas_Pause.gameObject.SetActive(false);
     }
 
     #region GamePlay
@@ -307,27 +320,32 @@ public class GameManager : MonoBehaviour
         Canvas_Finish.gameObject.SetActive(true);
     }
     #endregion
-
-    void OnClickBTSettings()
+    void OnClickGamePlay_BT_Back()
     {
-        Canvas_Settings.gameObject.SetActive(true);
+        Canvas_GamePlay.gameObject.SetActive(false);
+        MainMenuManager.inst.GoToMainMenu();
+    }
+
+    void OnClickGamePlay_BT_Pause()
+    {
+        Canvas_Pause.gameObject.SetActive(true);
     }
     void OnClickSetSound()
     {
         bool isMute = AudioManager.inst.ToggleMuteSound();
         if (isMute == true)
-            Settings_IMG_SetSound.sprite = ICON_Mute;
+            Pause_IMG_SetSound.sprite = ICON_Mute;
         else
-            Settings_IMG_SetSound.sprite = ICON_UnMute;
+            Pause_IMG_SetSound.sprite = ICON_UnMute;
     }
     void OnClickBTBack()
     {
-        Canvas_Settings.gameObject.SetActive(false);
+        Canvas_Pause.gameObject.SetActive(false);
     }
     void OnClickBTRestart()
     {
         Canvas_Finish.gameObject.SetActive(false);
-        Canvas_Settings.gameObject.SetActive(false);
+        Canvas_Pause.gameObject.SetActive(false);
         ResetScore();
         StartGame(gameMode);
     }
@@ -335,9 +353,15 @@ public class GameManager : MonoBehaviour
     {
         Canvas_GamePlay.gameObject.SetActive(false);
         Canvas_Finish.gameObject.SetActive(false);
-        Canvas_Settings.gameObject.SetActive(false);
+        Canvas_Pause.gameObject.SetActive(false);
         ResetScore();
         MainMenuManager.inst.GoToMainMenu();
+    }
+    void OnClickFinish_BT_Trophy()
+    {
+        Canvas_GamePlay.gameObject.SetActive(false);
+        Canvas_Finish.gameObject.SetActive(false);
+        Canvas_ScoreBoard.gameObject.SetActive(true);
     }
     void ResetScore()
     {

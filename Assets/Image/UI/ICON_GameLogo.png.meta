@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 61351d2e93f8d7d4e986af7e4fca870f
+guid: 4d7becc307229824bb84b9d3fe446421
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1769403625533518057
-    second: ICON_Mute_0
+      213: 6021736392836902806
+    second: ICON_GameLogo_0
+  - first:
+      213: -3402050597731768391
+    second: ICON_GameLogo_1
+  - first:
+      213: 1791621655945688340
+    second: ICON_GameLogo_2
+  - first:
+      213: 3224859716160965731
+    second: ICON_GameLogo_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ICON_Mute_0
+      name: ICON_GameLogo_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
+        x: 98
+        y: 144
+        width: 38
+        height: 57
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 71f49cbf6c0d177e0800000000000000
-      internalID: -1769403625533518057
+      spriteID: 69fe5124851819350800000000000000
+      internalID: 6021736392836902806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICON_GameLogo_1
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 180
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b7ea46910d79c0d0800000000000000
+      internalID: -3402050597731768391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICON_GameLogo_2
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 152
+        width: 12
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4153a86576e1dd810800000000000000
+      internalID: 1791621655945688340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICON_GameLogo_3
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 26
+        width: 219
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36ccd3863d001cc20800000000000000
+      internalID: 3224859716160965731
       vertices: []
       indices: 
       edges: []
@@ -138,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ICON_Mute_0: -1769403625533518057
+      ICON_GameLogo_0: 6021736392836902806
+      ICON_GameLogo_1: -3402050597731768391
+      ICON_GameLogo_2: 1791621655945688340
+      ICON_GameLogo_3: 3224859716160965731
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
