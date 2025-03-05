@@ -18,11 +18,15 @@ public class MainMenuManager : MonoBehaviour
 
     [Header("GamePlay")]
     [SerializeField] Canvas Canvas_GamePlay;
-    [SerializeField] Button SelectLevel_BT_Back;
 
     [Header("Settings")]
     [SerializeField] Canvas Canvas_Settings;
+    [SerializeField] Button Settings_BT_Credit;
     [SerializeField] Button Settings_BT_Back;
+
+    [Header("Credit")]
+    [SerializeField] Canvas Canvas_Credit;
+    [SerializeField] Button Credit_BT_Back;
 
     [Header("ScoreBoard")]
     [SerializeField] Canvas Canvas_ScoreBoard;
@@ -40,6 +44,7 @@ public class MainMenuManager : MonoBehaviour
         Canvas_SelectLevel.gameObject.SetActive(false);
         Canvas_GamePlay.gameObject.SetActive(false);
         Canvas_Settings.gameObject.SetActive(false);
+        Canvas_Credit.gameObject.SetActive(false);
         Canvas_ScoreBoard.gameObject.SetActive(false);
     }
 
@@ -53,9 +58,10 @@ public class MainMenuManager : MonoBehaviour
         BT_Normal.onClick.AddListener(OnClickBT_Normal);
         BT_Hard.onClick.AddListener(OnClickBT_Hard);
 
-        SelectLevel_BT_Back.onClick.AddListener(OnClickSelectLevel_BT_Back);
-
+        Settings_BT_Credit.onClick.AddListener(OnClickSettings_BT_Credit);
         Settings_BT_Back.onClick.AddListener(OnClickSettings_BT_Back);
+
+        Credit_BT_Back.onClick.AddListener(OnClickCredit_BT_Back);
 
         ScoreBoard_BT_Back.onClick.AddListener(OnClickScoreBoard_BT_Back);
     }
@@ -103,10 +109,10 @@ public class MainMenuManager : MonoBehaviour
         GameManager.inst.StartGame(GameManager.GameMode.Hard);
     }
 
-    void OnClickSelectLevel_BT_Back()
+    void OnClickSettings_BT_Credit()
     {
-        Canvas_SelectLevel.gameObject.SetActive(false);
-        Canvas_MainMenu.gameObject.SetActive(true);
+        Canvas_Settings.gameObject.SetActive(false);
+        Canvas_Credit.gameObject.SetActive(true);
     }
 
     void OnClickSettings_BT_Back()
@@ -115,6 +121,11 @@ public class MainMenuManager : MonoBehaviour
         Canvas_MainMenu.gameObject.SetActive(true);
     }
 
+    void OnClickCredit_BT_Back()
+    {
+        Canvas_Credit.gameObject.SetActive(false);
+        Canvas_Settings.gameObject.SetActive(true);
+    }
     void OnClickScoreBoard_BT_Back()
     {
         Canvas_ScoreBoard.gameObject.SetActive(false);

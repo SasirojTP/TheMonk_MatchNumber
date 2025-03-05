@@ -4,13 +4,16 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager inst;
     [SerializeField] bool isMuteSound = false;
-    [Header("Sound")]
+    [Header("SFX_Sound")]
     [SerializeField] AudioSource clickSound;
     [SerializeField] AudioSource winSound;
+    [Header("BGM_Sound")]
+    [SerializeField] SoundSource BGM_Classic;
 
     private void Start()
     {
         inst = this;
+        PlayBGMSound();
     }
 
     public bool ToggleMuteSound()
@@ -28,5 +31,10 @@ public class AudioManager : MonoBehaviour
     {
         if (isMuteSound == false)
             winSound.Play();
+    }
+    void PlayBGMSound()
+    {
+        BGM_Classic.sound.loop = true;
+        BGM_Classic.sound.Play();
     }
 }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -21,7 +20,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] InputGroup GRP_InputGroup_1;
 
     [SerializeField] TextMeshProUGUI GamePlay_TEXT_Score;
-    [SerializeField] Button GamePlay_BT_Back;
     [SerializeField] Button GamePlay_BT_Pause;
 
     [Header("Finish")]
@@ -70,7 +68,6 @@ public class GameManager : MonoBehaviour
 
     void AddListenerToBT()
     {
-        GamePlay_BT_Back.onClick.AddListener(OnClickGamePlay_BT_Back);
         GamePlay_BT_Pause.onClick.AddListener(OnClickGamePlay_BT_Pause);
 
         Pause_BT_SetSound.onClick.AddListener(OnClickSetSound);
@@ -320,11 +317,6 @@ public class GameManager : MonoBehaviour
         Canvas_Finish.gameObject.SetActive(true);
     }
     #endregion
-    void OnClickGamePlay_BT_Back()
-    {
-        Canvas_GamePlay.gameObject.SetActive(false);
-        MainMenuManager.inst.GoToMainMenu();
-    }
 
     void OnClickGamePlay_BT_Pause()
     {
