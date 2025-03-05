@@ -3,7 +3,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager inst;
-    [SerializeField] bool isMuteSound = false;
+    [SerializeField] bool isMuteSFXSound = false;
+    [SerializeField] bool isMuteBGMSound = false;
     [Header("SFX_Sound")]
     [SerializeField] AudioSource clickSound;
     [SerializeField] AudioSource winSound;
@@ -18,23 +19,40 @@ public class AudioManager : MonoBehaviour
 
     public bool ToggleMuteSound()
     {
-        isMuteSound = !isMuteSound;
-        return isMuteSound;
+        isMuteSFXSound = !isMuteSFXSound;
+        return isMuteSFXSound;
     }
 
     public void PlayClickSound()
     {
-        if(isMuteSound == false)
+        if(isMuteSFXSound == false)
             clickSound.Play();
     }
     public void PlayWinSound()
     {
-        if (isMuteSound == false)
+        if (isMuteSFXSound == false)
             winSound.Play();
+    }
+    public void TogglePlayBGMSound()
+    {
+        isMuteBGMSound = !isMuteBGMSound;
+
+        if(isMuteBGMSound == true)
+        {
+            PlayBGMSound();
+        }
+        else
+        {
+            StopPlayBGMSound();
+        }
     }
     void PlayBGMSound()
     {
         BGM_Classic.sound.loop = true;
         BGM_Classic.sound.Play();
+    }
+    void StopPlayBGMSound()
+    {
+        BGM_Classic.sound.Stop();
     }
 }
