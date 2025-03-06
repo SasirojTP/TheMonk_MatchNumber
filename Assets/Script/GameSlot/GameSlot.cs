@@ -38,7 +38,7 @@ public class GameSlot : MonoBehaviour
     public void GetInput(string input)
     {
         inputList.Add(input);
-        GRP_InputSlotList[inputCount].GetComponent<InputSlot>().SetTEXT_InputSlot(input);
+        GRP_InputSlotList[inputCount].GetComponent<InputSlot>().SetIMG_Egg(input);
         inputCount++;
         CheckIsAllInputEdit();
     }
@@ -88,12 +88,12 @@ public class GameSlot : MonoBehaviour
             switch (checkAnswerList[i])
             {
                 case "*":
-                    GRP_InputSlotList[i].GetComponent<InputSlot>().SetIMG_BG_InputSlotColor(Color.green);
+                    GRP_InputSlotList[i].GetComponent<InputSlot>().SetIMG_StatusColor(Color.green);
                     break;
                 default:
                     if (checkAnswerList.Contains(inputList[i]))
                     {
-                        GRP_InputSlotList[i].GetComponent<InputSlot>().SetIMG_BG_InputSlotColor(Color.yellow);
+                        GRP_InputSlotList[i].GetComponent<InputSlot>().SetIMG_StatusColor(Color.yellow);
                     }
                     break;
             }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,10 +35,17 @@ public class GameManager : MonoBehaviour
 
     [Header("Pause")]
     [SerializeField] Canvas Canvas_Pause;
-    [SerializeField] Button Pause_BT_SetSound;
-    [SerializeField] Image Pause_IMG_SetSound;
-    [SerializeField] Sprite ICON_Mute;
-    [SerializeField] Sprite ICON_UnMute;
+    [SerializeField] Button Pause_BT_SFX;
+    [SerializeField] Image Pause_IMG_BT_SFX;
+
+    [SerializeField] Button Pause_BT_BGM;
+    [SerializeField] Image Pause_IMG_BT_BGM;
+
+    [SerializeField] Sprite ICON_MuteSFX;
+    [SerializeField] Sprite ICON_PlaySFX;
+    [SerializeField] Sprite ICON_MuteBGM;
+    [SerializeField] Sprite ICON_PlayBGM;
+
     [SerializeField] Button Pause_BT_Back;
     [SerializeField] Button Pause_BT_Restart;
     [SerializeField] Button Pause_BT_MainMenu;
@@ -70,7 +78,8 @@ public class GameManager : MonoBehaviour
     {
         GamePlay_BT_Pause.onClick.AddListener(OnClickGamePlay_BT_Pause);
 
-        Pause_BT_SetSound.onClick.AddListener(OnClickSetSound);
+        Pause_BT_SFX.onClick.AddListener(OnClickPause_BT_SFX);
+        Pause_BT_BGM.onClick.AddListener(OnClickPause_BT_BGM);
         Pause_BT_Back.onClick.AddListener(OnClickBTBack);
         Pause_BT_Restart.onClick.AddListener(OnClickBTRestart);
         Pause_BT_MainMenu.onClick.AddListener(OnClickBT_MainMenu);
@@ -156,6 +165,7 @@ public class GameManager : MonoBehaviour
     {
         foreach(Transform child in GRP_GameSlotList.transform)
         {
+            DOTween.KillAll(child);
             Destroy(child.gameObject);
         }
     }
@@ -321,15 +331,38 @@ public class GameManager : MonoBehaviour
     void OnClickGamePlay_BT_Pause()
     {
         Canvas_Pause.gameObject.SetActive(true);
+        InitializeCanvas_Pause();
     }
-    void OnClickSetSound()
+    void InitializeCanvas_Pause()
     {
-        bool isMute = AudioManager.inst.ToggleMuteSound();
-        if (isMute == true)
-            Pause_IMG_SetSound.sprite = ICON_Mute;
-        else
-            Pause_IMG_SetSound.sprite = ICON_UnMute;
+        SetIMG_BT_SFX(AudioManager.inst.GetIsMuteSFXSound());
+        SetIMG_BT_BGM(AudioManager.inst.GetIsMuteBGMSound());
     }
+    void SetIMG_BT_SFX(bool isMuteSFXSound)
+    {
+        if (isMuteSFXSound == true)
+            Pause_IMG_BT_SFX.sprite = ICON_MuteSFX;
+        else
+            Pause_IMG_BT_SFX.sprite = ICON_PlaySFX;
+    }
+    void SetIMG_BT_BGM(bool isMuteBGMSound)
+    {
+        if (isMuteBGMSound == true)
+            Pause_IMG_BT_BGM.sprite = ICON_MuteBGM;
+        else
+            Pause_IMG_BT_BGM.sprite = ICON_PlayBGM;
+    }
+    void OnClickPause_BT_SFX()
+    {
+        bool isMuteSFXSound = AudioManager.inst.ToggleMuteSFXSound();
+        SetIMG_BT_SFX(isMuteSFXSound);
+    }
+    void OnClickPause_BT_BGM()
+    {
+        bool isMuteBGMSound = AudioManager.inst.ToggleMuteBGMSound();
+        SetIMG_BT_BGM(isMuteBGMSound);
+    }
+
     void OnClickBTBack()
     {
         Canvas_Pause.gameObject.SetActive(false);

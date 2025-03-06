@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: e953e384447249344956c100686164e3
+guid: cb8d009e4ebedf74abcb1138f580db13
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2388024066908871796
-    second: ICON_Egg_1_0
+      213: -1261337390133639178
+    second: ICON_UnMuteBGM_0
+  - first:
+      213: 3726286281432790566
+    second: ICON_UnMuteBGM_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,14 +116,14 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ICON_Egg_1_0
+      name: ICON_UnMuteBGM_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 256
-      alignment: 9
+        width: 512
+        height: 512
+      alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 47cdf2f8c37f32120800000000000000
-      internalID: 2388024066908871796
+      spriteID: 6f78a279354de7ee0800000000000000
+      internalID: -1261337390133639178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICON_UnMuteBGM_1
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 0
+        width: 333
+        height: 391
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 626763851ad66b330800000000000000
+      internalID: 3726286281432790566
       vertices: []
       indices: 
       edges: []
@@ -138,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0198ff8f28e02604ab4c206e2489ae65
+    spriteID: 57d824edc1b90434b9e18d0291a553a5
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ICON_Egg_1_0: 2388024066908871796
+      ICON_UnMuteBGM_0: -1261337390133639178
+      ICON_UnMuteBGM_1: 3726286281432790566
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

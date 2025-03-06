@@ -21,8 +21,19 @@ public class MainMenuManager : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] Canvas Canvas_Settings;
+    [SerializeField] Button Settings_BT_SFX;
+    [SerializeField] Image Settings_IMG_BT_SFX;
+
+    [SerializeField] Button Settings_BT_BGM;
+    [SerializeField] Image Settings_IMG_BT_BGM;
+
     [SerializeField] Button Settings_BT_Credit;
     [SerializeField] Button Settings_BT_Back;
+
+    [SerializeField] Sprite ICON_MuteSFX;
+    [SerializeField] Sprite ICON_PlaySFX;
+    [SerializeField] Sprite ICON_MuteBGM;
+    [SerializeField] Sprite ICON_PlayBGM;
 
     [Header("Credit")]
     [SerializeField] Canvas Canvas_Credit;
@@ -58,6 +69,8 @@ public class MainMenuManager : MonoBehaviour
         BT_Normal.onClick.AddListener(OnClickBT_Normal);
         BT_Hard.onClick.AddListener(OnClickBT_Hard);
 
+        Settings_BT_SFX.onClick.AddListener(OnClickSettings_BT_SFX);
+        Settings_BT_BGM.onClick.AddListener(OnClickSettings_BT_BGM);
         Settings_BT_Credit.onClick.AddListener(OnClickSettings_BT_Credit);
         Settings_BT_Back.onClick.AddListener(OnClickSettings_BT_Back);
 
@@ -85,6 +98,7 @@ public class MainMenuManager : MonoBehaviour
     {
         Canvas_MainMenu.gameObject.SetActive(false);
         Canvas_Settings.gameObject.SetActive(true);
+        InitializeCanvas_Settings();
     }
 
     void OnClickBT_Easy()
@@ -108,7 +122,35 @@ public class MainMenuManager : MonoBehaviour
         Canvas_GamePlay.gameObject.SetActive(true);
         GameManager.inst.StartGame(GameManager.GameMode.Hard);
     }
-
+    void InitializeCanvas_Settings()
+    {
+        SetIMG_BT_SFX(AudioManager.inst.GetIsMuteSFXSound());
+        SetIMG_BT_BGM(AudioManager.inst.GetIsMuteBGMSound());
+    }
+    void SetIMG_BT_SFX(bool isMuteSFXSound)
+    {
+        if (isMuteSFXSound == true)
+            Settings_IMG_BT_SFX.sprite = ICON_MuteSFX;
+        else
+            Settings_IMG_BT_SFX.sprite = ICON_PlaySFX;
+    }
+    void SetIMG_BT_BGM(bool isMuteBGMSound)
+    {
+        if (isMuteBGMSound == true)
+            Settings_IMG_BT_BGM.sprite = ICON_MuteBGM;
+        else
+            Settings_IMG_BT_BGM.sprite = ICON_PlayBGM;
+    }
+    void OnClickSettings_BT_SFX()
+    {
+        bool isMuteSFXSound = AudioManager.inst.ToggleMuteSFXSound();
+        SetIMG_BT_SFX(isMuteSFXSound);
+    }
+    void OnClickSettings_BT_BGM()
+    {
+        bool isMuteBGMSound = AudioManager.inst.ToggleMuteBGMSound();
+        SetIMG_BT_BGM(isMuteBGMSound);
+    }
     void OnClickSettings_BT_Credit()
     {
         Canvas_Settings.gameObject.SetActive(false);

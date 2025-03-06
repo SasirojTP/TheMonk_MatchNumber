@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e953e384447249344956c100686164e3
+guid: 9cae0067adf515941865dafead80d7fa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2388024066908871796
-    second: ICON_Egg_1_0
+      213: -3576635552311498368
+    second: ICON_MuteBGM_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ICON_Egg_1_0
+      name: ICON_MuteBGM_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 256
         height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 47cdf2f8c37f32120800000000000000
-      internalID: 2388024066908871796
+      spriteID: 089a07d3aec3d5ec0800000000000000
+      internalID: -3576635552311498368
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0198ff8f28e02604ab4c206e2489ae65
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ICON_Egg_1_0: 2388024066908871796
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

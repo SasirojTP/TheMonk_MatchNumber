@@ -1,20 +1,30 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using DG.Tweening;
 
 public class InputSlot : MonoBehaviour
 {
-    GameSlot gameSlot;
-    [SerializeField] Image IMG_BG_InputSlot;
-    [SerializeField] TextMeshProUGUI TEXT_InputSlot;
+    [Header("UI")]
+    [SerializeField] Image IMG_Status;
+    [SerializeField] Image IMG_Egg;
+    [SerializeField] EggAsset eggAsset;
 
-    public void SetTEXT_InputSlot(string inputText)
+    public void SetIMG_Egg(string inputText)
     {
-        TEXT_InputSlot.text = inputText;
+        SetEggAnimation();
+        IMG_Egg.sprite = eggAsset.eggImageList[int.Parse(inputText)];
     }
-
-    public void SetIMG_BG_InputSlotColor(Color color)
+    void SetEggAnimation()
     {
-        IMG_BG_InputSlot.color = color;
+        IMG_Egg.rectTransform.localScale = new Vector3(0, 0, 0);
+        IMG_Egg.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetEase(Ease.InOutSine).OnComplete(() =>
+        {
+            IMG_Egg.transform.DOScale(new Vector3(1, 1, 1), 0.2f).SetEase(Ease.InOutSine);
+        });
+    }
+    
+    public void SetIMG_StatusColor(Color color)
+    {
+        IMG_Status.color = color;
     }
 }

@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource clickSound;
     [SerializeField] AudioSource winSound;
     [Header("BGM_Sound")]
-    [SerializeField] SoundSource BGM_Classic;
+    [SerializeField] AudioSource BGM_Classic;
 
     private void Start()
     {
@@ -17,7 +17,15 @@ public class AudioManager : MonoBehaviour
         PlayBGMSound();
     }
 
-    public bool ToggleMuteSound()
+    public bool GetIsMuteSFXSound()
+    {
+        return isMuteSFXSound;
+    }
+    public bool GetIsMuteBGMSound()
+    {
+        return isMuteBGMSound;
+    }
+    public bool ToggleMuteSFXSound()
     {
         isMuteSFXSound = !isMuteSFXSound;
         return isMuteSFXSound;
@@ -33,26 +41,28 @@ public class AudioManager : MonoBehaviour
         if (isMuteSFXSound == false)
             winSound.Play();
     }
-    public void TogglePlayBGMSound()
+    public bool ToggleMuteBGMSound()
     {
         isMuteBGMSound = !isMuteBGMSound;
 
         if(isMuteBGMSound == true)
         {
-            PlayBGMSound();
+            StopPlayBGMSound();
         }
         else
         {
-            StopPlayBGMSound();
+            PlayBGMSound();
         }
+        return isMuteBGMSound;
     }
     void PlayBGMSound()
     {
-        BGM_Classic.sound.loop = true;
-        BGM_Classic.sound.Play();
+        BGM_Classic.loop = true;
+        BGM_Classic.Play();
     }
     void StopPlayBGMSound()
     {
-        BGM_Classic.sound.Stop();
+        BGM_Classic.loop = false;
+        BGM_Classic.Stop();
     }
 }
