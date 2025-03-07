@@ -36,6 +36,10 @@ public class TimeManager : MonoBehaviour
         timeRemining = maxTime;
         startTimer = true;
     }
+    public void ContinueTime()
+    {
+        startTimer = true;
+    }
 
     public void StopTime()
     {

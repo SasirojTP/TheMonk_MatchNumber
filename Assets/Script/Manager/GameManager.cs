@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
 
         Pause_BT_SFX.onClick.AddListener(OnClickPause_BT_SFX);
         Pause_BT_BGM.onClick.AddListener(OnClickPause_BT_BGM);
-        Pause_BT_Back.onClick.AddListener(OnClickBTBack);
+        Pause_BT_Back.onClick.AddListener(OnClickPause_BT_Back);
         Pause_BT_Restart.onClick.AddListener(OnClickBTRestart);
         Pause_BT_MainMenu.onClick.AddListener(OnClickBT_MainMenu);
 
@@ -331,6 +331,7 @@ public class GameManager : MonoBehaviour
     void OnClickGamePlay_BT_Pause()
     {
         Canvas_Pause.gameObject.SetActive(true);
+        TimeManager.inst.StopTime();
         InitializeCanvas_Pause();
     }
     void InitializeCanvas_Pause()
@@ -363,9 +364,10 @@ public class GameManager : MonoBehaviour
         SetIMG_BT_BGM(isMuteBGMSound);
     }
 
-    void OnClickBTBack()
+    void OnClickPause_BT_Back()
     {
         Canvas_Pause.gameObject.SetActive(false);
+        TimeManager.inst.ContinueTime();
     }
     void OnClickBTRestart()
     {
