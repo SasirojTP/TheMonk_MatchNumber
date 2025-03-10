@@ -90,7 +90,6 @@ public class MainMenuManager : MonoBehaviour
     }
     void OnClickBT_Trophy()
     {
-        Canvas_MainMenu.gameObject.SetActive(false);
         Canvas_ScoreBoard.gameObject.SetActive(true);
     }
     void OnClickBT_Setting()
@@ -170,7 +169,6 @@ public class MainMenuManager : MonoBehaviour
     void OnClickScoreBoard_BT_Back()
     {
         Canvas_ScoreBoard.gameObject.SetActive(false);
-        Canvas_MainMenu.gameObject.SetActive(true);
     }
     //void OnClickBT_Quit()
     //{

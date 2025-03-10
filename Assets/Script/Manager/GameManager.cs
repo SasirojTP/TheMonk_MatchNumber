@@ -421,8 +421,6 @@ public class GameManager : MonoBehaviour
     }
     void OnClickFinish_BT_Trophy()
     {
-        Canvas_GamePlay.gameObject.SetActive(false);
-        Canvas_Finish.gameObject.SetActive(false);
         Canvas_ScoreBoard.gameObject.SetActive(true);
     }
     void ResetScore()
