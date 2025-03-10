@@ -10,11 +10,17 @@ public class GameManager : MonoBehaviour
 
     [Header("Prefab")]
     [SerializeField] GameObject GameSlotPrefab;
+    [SerializeField] GameObject IMG_AnswerEggPrefab;
+
     [Header("UI")]
     [SerializeField] Canvas Canvas_GamePlay;
     [SerializeField] int minScroll = 0;
     [SerializeField] int gameSlotHeight = 170;
     [SerializeField] int maxScroll;
+
+    [SerializeField] GameObject GRP_AnswerEgg;
+    [SerializeField] Image IMG_HideAnswer;
+    [SerializeField] Transform POS_HideAnswerPos;
 
     [SerializeField] GameObject GRP_GameSlotList;
     RectTransform GRP_GameSlotList_RectTransform;
@@ -59,6 +65,7 @@ public class GameManager : MonoBehaviour
     int round;
     int answerCount;
     [SerializeField] List<string> answerList = new List<string>();
+    List<GameObject> gameSlotList = new List<GameObject>();
     GameSlot currentGameSlot;
     int score = 0;
 
@@ -67,9 +74,6 @@ public class GameManager : MonoBehaviour
         inst = this;
         GRP_GameSlotList_RectTransform = GRP_GameSlotList.GetComponent<RectTransform>();
 
-        Canvas_GamePlay.gameObject.SetActive(false);
-        Canvas_Pause.gameObject.SetActive(false);
-        Canvas_Finish.gameObject.SetActive(false);
         AddListenerToBT();
         HideUI();
     }
@@ -163,7 +167,8 @@ public class GameManager : MonoBehaviour
 
     void ClearGameSlotList()
     {
-        foreach(Transform child in GRP_GameSlotList.transform)
+        gameSlotList.Clear();
+        foreach (Transform child in GRP_GameSlotList.transform)
         {
             DOTween.KillAll(child);
             Destroy(child.gameObject);
@@ -242,19 +247,44 @@ public class GameManager : MonoBehaviour
             answer += n;
         }
         print(answer);
-        SpawnGRP_GameSlot();
+
+        SetAnswer();
+        for(int i = 0; i <= 6; i++)
+        {
+            SpawnGRP_GameSlot();
+        }
+        SetCurrentGameSlot();
+    }
+    void SetAnswer()
+    {
+        foreach (Transform child in GRP_AnswerEgg.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (var n in answerList)
+        {
+            GameObject answerEggPrefab = Instantiate(IMG_AnswerEggPrefab);
+            answerEggPrefab.transform.SetParent(GRP_AnswerEgg.transform);
+            answerEggPrefab.GetComponent<RectTransform>().localScale = Vector3.one;
+            answerEggPrefab.GetComponent<AnswerEgg>().InitializeAnswerEgg(n);
+        }
     }
 
     public void SpawnGRP_GameSlot()
     {
-        round++;
         GameObject prefab = Instantiate(GameSlotPrefab);
         prefab.transform.SetParent(GRP_GameSlotList.transform);
         prefab.GetComponent<RectTransform>().localScale = Vector3.one;
-        currentGameSlot = prefab.GetComponent<GameSlot>();
+        gameSlotList.Add(prefab);
+    }
+    public void SetCurrentGameSlot()
+    {
+        round++;
+        currentGameSlot = gameSlotList[round - 1].GetComponent<GameSlot>();
         currentGameSlot.InitializeGameSlot(answerCount, answerList, round);
 
-        if(round > 6)
+        if (round >= 2)
         {
             SetMaxScroll();
             ScrollToPosition(maxScroll);
@@ -313,11 +343,16 @@ public class GameManager : MonoBehaviour
         score += additionScore;
         GamePlay_TEXT_Score.text = "Score : " + score.ToString();
     }
-    public void GameFinish()
+    public void PlayerSentCorrectAnswer()
     {
-        CalculateScore();
-        ContinueGame();
         AudioManager.inst.PlayWinSound();
+        GRP_InputGroup_1.EnableBT_InputList(false);
+        CalculateScore();
+        IMG_HideAnswer.gameObject.transform.DOMove(POS_HideAnswerPos.transform.position, 0.75f).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo).OnComplete(() =>
+        {
+            ContinueGame();
+            GRP_InputGroup_1.EnableBT_InputList(true);
+        });
     }
 
     public void TimeOut()

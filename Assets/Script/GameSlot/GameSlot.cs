@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class GameSlot : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameSlot : MonoBehaviour
     [SerializeField] List<string> answerList = new List<string>();
     int inputCount = 0;
     List<string> inputList = new List<string>();
+    List<string> checkAnswerList = new List<string>();
+
     [Header ("UI")]
     [SerializeField] TextMeshProUGUI TEXT_Round;
     [SerializeField] GameObject GRP_InputSlotHolder;
@@ -16,13 +19,21 @@ public class GameSlot : MonoBehaviour
     [SerializeField] GameObject GRP_InputSlotPrefab;
     List<GameObject> GRP_InputSlotList = new List<GameObject>();
 
+    [SerializeField] GameObject IMG_EggTab;
+
     public void InitializeGameSlot(int AnswerCount ,List<string> AnswerList, int round)
     {
         answerCount = AnswerCount;
         answerList = AnswerList;
         TEXT_Round.text = round.ToString();
         inputCount = 0;
+
+        PlayAnimationEggTab();
         SpawnGRP_InputSlot();
+    }
+    void PlayAnimationEggTab()
+    {
+        IMG_EggTab.transform.DOScaleY(0,1.0f);
     }
     void SpawnGRP_InputSlot()
     {
@@ -51,7 +62,6 @@ public class GameSlot : MonoBehaviour
         }
     }
 
-    List<string> checkAnswerList = new List<string>();
     void CheckAnswer()
     {
         bool isPass = true;
@@ -73,11 +83,12 @@ public class GameSlot : MonoBehaviour
 
         if (isPass)
         {
-            GameManager.inst.GameFinish();
+            GameManager.inst.PlayerSentCorrectAnswer();
         }
         else
         {
             GameManager.inst.SpawnGRP_GameSlot();
+            GameManager.inst.SetCurrentGameSlot();
         }
     }
 

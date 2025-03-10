@@ -53,7 +53,6 @@ public class MainMenuManager : MonoBehaviour
     void HideUI()
     {
         Canvas_SelectLevel.gameObject.SetActive(false);
-        Canvas_GamePlay.gameObject.SetActive(false);
         Canvas_Settings.gameObject.SetActive(false);
         Canvas_Credit.gameObject.SetActive(false);
         Canvas_ScoreBoard.gameObject.SetActive(false);

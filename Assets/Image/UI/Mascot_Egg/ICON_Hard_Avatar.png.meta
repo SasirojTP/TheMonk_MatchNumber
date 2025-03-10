@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: 9babeb00434a3334384ea2b08f316862
+guid: c9c282d42a7f6c047ba1c35927f99a9e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2351802442392548385
-    second: ICON_Pause_0
+      213: 7196326673711055653
+    second: ICON_Hard_Avatar_0
   - first:
-      213: 8005485727621380789
-    second: ICON_Pause_1
+      213: 2312862738542380250
+    second: ICON_Hard_Avatar_1
+  - first:
+      213: 9077205885462795586
+    second: ICON_Hard_Avatar_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ICON_Pause_0
+      name: ICON_Hard_Avatar_0
       rect:
         serializedVersion: 2
-        x: 47
-        y: 33
-        width: 181
-        height: 446
+        x: 41
+        y: 184
+        width: 846
+        height: 656
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 12434b86cd743a020800000000000000
-      internalID: 2351802442392548385
+      spriteID: 52347326bfc7ed360800000000000000
+      internalID: 7196326673711055653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ICON_Pause_1
+      name: ICON_Hard_Avatar_1
       rect:
         serializedVersion: 2
-        x: 284
-        y: 33
-        width: 181
-        height: 446
+        x: 877
+        y: 438
+        width: 64
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +156,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5baf459bad2391f60800000000000000
-      internalID: 8005485727621380789
+      spriteID: ad44e091860f81020800000000000000
+      internalID: 2312862738542380250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICON_Hard_Avatar_2
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 498
+        width: 99
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2455814e8a6b8fd70800000000000000
+      internalID: 9077205885462795586
       vertices: []
       indices: 
       edges: []
@@ -173,8 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ICON_Pause_0: 2351802442392548385
-      ICON_Pause_1: 8005485727621380789
+      ICON_Hard_Avatar_0: 7196326673711055653
+      ICON_Hard_Avatar_1: 2312862738542380250
+      ICON_Hard_Avatar_2: 9077205885462795586
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

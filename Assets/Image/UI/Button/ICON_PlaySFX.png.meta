@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 9babeb00434a3334384ea2b08f316862
+guid: ff283aece412bbc43abbd0bfaba11945
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2351802442392548385
-    second: ICON_Pause_0
-  - first:
-      213: 8005485727621380789
-    second: ICON_Pause_1
+      213: 8442860912091233894
+    second: ICON_PlaySFX_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ICON_Pause_0
+      name: ICON_PlaySFX_0
       rect:
         serializedVersion: 2
         x: 47
-        y: 33
-        width: 181
-        height: 446
+        y: 16
+        width: 418
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 12434b86cd743a020800000000000000
-      internalID: 2351802442392548385
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ICON_Pause_1
-      rect:
-        serializedVersion: 2
-        x: 284
-        y: 33
-        width: 181
-        height: 446
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5baf459bad2391f60800000000000000
-      internalID: 8005485727621380789
+      spriteID: 66e7a3174411b2570800000000000000
+      internalID: 8442860912091233894
       vertices: []
       indices: 
       edges: []
@@ -163,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -172,9 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ICON_Pause_0: 2351802442392548385
-      ICON_Pause_1: 8005485727621380789
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -27,6 +27,4 @@ public class BT_Input : MonoBehaviour
     {
         IMG_Egg.sprite = eggAsset.eggImageList[inputNumber];
     }
-
-
 }
