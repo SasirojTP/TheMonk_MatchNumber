@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3eda95807208e5240add11b95e321fcb
+guid: 3b1d9467a6632c44a9f6632d30631038
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -116,10 +116,10 @@ TextureImporter:
       name: ICON_Medium_Avatar_0
       rect:
         serializedVersion: 2
-        x: 147
-        y: 182
-        width: 731
-        height: 659
+        x: 36
+        y: 44
+        width: 184
+        height: 167
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

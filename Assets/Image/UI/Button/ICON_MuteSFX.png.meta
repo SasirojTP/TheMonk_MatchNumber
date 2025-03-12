@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9cae0067adf515941865dafead80d7fa
+guid: 9b1ab3d1e59ed2e49adaca089492b337
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3576635552311498368
-    second: ICON_MuteBGM_0
+      213: 616981705227095214
+    second: ICON_MuteSFX_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ICON_MuteBGM_0
+      name: ICON_MuteSFX_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
+        x: 23
+        y: 7
+        width: 211
+        height: 242
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 089a07d3aec3d5ec0800000000000000
-      internalID: -3576635552311498368
+      spriteID: eacc9fc8795ff8800800000000000000
+      internalID: 616981705227095214
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ICON_MuteBGM_0: -3576635552311498368
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -116,10 +116,10 @@ TextureImporter:
       name: ICON_Back_0
       rect:
         serializedVersion: 2
-        x: 48
-        y: 11
-        width: 417
-        height: 489
+        x: 23
+        y: 4
+        width: 210
+        height: 247
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ICON_Back_0: 1248590645418323852
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

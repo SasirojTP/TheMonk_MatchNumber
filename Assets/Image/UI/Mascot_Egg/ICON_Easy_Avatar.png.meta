@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5cd3bf3b7edc63a459ad9ef5958218f0
+guid: a63d383bd6affc043be6bc20aa8f54d2
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -116,10 +116,10 @@ TextureImporter:
       name: ICON_Easy_Avatar_0
       rect:
         serializedVersion: 2
-        x: 125
-        y: 204
-        width: 775
-        height: 615
+        x: 30
+        y: 51
+        width: 196
+        height: 155
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -22,10 +22,8 @@ public class MainMenuManager : MonoBehaviour
     [Header("Settings")]
     [SerializeField] Canvas Canvas_Settings;
     [SerializeField] Button Settings_BT_SFX;
-    [SerializeField] Image Settings_IMG_BT_SFX;
 
     [SerializeField] Button Settings_BT_BGM;
-    [SerializeField] Image Settings_IMG_BT_BGM;
 
     [SerializeField] Button Settings_BT_Credit;
     [SerializeField] Button Settings_BT_Back;
@@ -87,16 +85,19 @@ public class MainMenuManager : MonoBehaviour
     {
         Canvas_MainMenu.gameObject.SetActive(false);
         Canvas_SelectLevel.gameObject.SetActive(true);
+        AudioManager.inst.PlayClickSound();
     }
     void OnClickBT_Trophy()
     {
         Canvas_ScoreBoard.gameObject.SetActive(true);
+        AudioManager.inst.PlayClickSound();
     }
     void OnClickBT_Setting()
     {
         Canvas_MainMenu.gameObject.SetActive(false);
         Canvas_Settings.gameObject.SetActive(true);
         InitializeCanvas_Settings();
+        AudioManager.inst.PlayClickSound();
     }
 
     void OnClickBT_Easy()
@@ -105,6 +106,7 @@ public class MainMenuManager : MonoBehaviour
         Canvas_SelectLevel.gameObject.SetActive(false);
         Canvas_GamePlay.gameObject.SetActive(true);
         GameManager.inst.StartGame(GameManager.GameMode.Easy);
+        AudioManager.inst.PlayClickSound();
     }
     void OnClickBT_Normal()
     {
@@ -112,6 +114,7 @@ public class MainMenuManager : MonoBehaviour
         Canvas_SelectLevel.gameObject.SetActive(false);
         Canvas_GamePlay.gameObject.SetActive(true);
         GameManager.inst.StartGame(GameManager.GameMode.Normal);
+        AudioManager.inst.PlayClickSound();
     }
     void OnClickBT_Hard()
     {
@@ -119,6 +122,7 @@ public class MainMenuManager : MonoBehaviour
         Canvas_SelectLevel.gameObject.SetActive(false);
         Canvas_GamePlay.gameObject.SetActive(true);
         GameManager.inst.StartGame(GameManager.GameMode.Hard);
+        AudioManager.inst.PlayClickSound();
     }
     void InitializeCanvas_Settings()
     {
@@ -128,47 +132,53 @@ public class MainMenuManager : MonoBehaviour
     void SetIMG_BT_SFX(bool isMuteSFXSound)
     {
         if (isMuteSFXSound == true)
-            Settings_IMG_BT_SFX.sprite = ICON_MuteSFX;
+            Settings_BT_SFX.image.sprite = ICON_MuteSFX;
         else
-            Settings_IMG_BT_SFX.sprite = ICON_PlaySFX;
+            Settings_BT_SFX.image.sprite = ICON_PlaySFX;
     }
     void SetIMG_BT_BGM(bool isMuteBGMSound)
     {
         if (isMuteBGMSound == true)
-            Settings_IMG_BT_BGM.sprite = ICON_MuteBGM;
+            Settings_BT_BGM.image.sprite = ICON_MuteBGM;
         else
-            Settings_IMG_BT_BGM.sprite = ICON_PlayBGM;
+            Settings_BT_BGM.image.sprite = ICON_PlayBGM;
     }
     void OnClickSettings_BT_SFX()
     {
         bool isMuteSFXSound = AudioManager.inst.ToggleMuteSFXSound();
         SetIMG_BT_SFX(isMuteSFXSound);
+        AudioManager.inst.PlayClickSound();
     }
     void OnClickSettings_BT_BGM()
     {
         bool isMuteBGMSound = AudioManager.inst.ToggleMuteBGMSound();
         SetIMG_BT_BGM(isMuteBGMSound);
+        AudioManager.inst.PlayClickSound();
     }
     void OnClickSettings_BT_Credit()
     {
         Canvas_Settings.gameObject.SetActive(false);
         Canvas_Credit.gameObject.SetActive(true);
+        AudioManager.inst.PlayClickSound();
     }
 
     void OnClickSettings_BT_Back()
     {
         Canvas_Settings.gameObject.SetActive(false);
         Canvas_MainMenu.gameObject.SetActive(true);
+        AudioManager.inst.PlayClickSound();
     }
 
     void OnClickCredit_BT_Back()
     {
         Canvas_Credit.gameObject.SetActive(false);
         Canvas_Settings.gameObject.SetActive(true);
+        AudioManager.inst.PlayClickSound();
     }
     void OnClickScoreBoard_BT_Back()
     {
         Canvas_ScoreBoard.gameObject.SetActive(false);
+        AudioManager.inst.PlayClickSound();
     }
     //void OnClickBT_Quit()
     //{

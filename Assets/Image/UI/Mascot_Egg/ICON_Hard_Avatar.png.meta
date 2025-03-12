@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c9c282d42a7f6c047ba1c35927f99a9e
+guid: 501f0c3255b5ff74b88614ca659338ba
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -122,10 +122,10 @@ TextureImporter:
       name: ICON_Hard_Avatar_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 184
-        width: 846
-        height: 656
+        x: 8
+        y: 45
+        width: 214
+        height: 165
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,10 +144,10 @@ TextureImporter:
       name: ICON_Hard_Avatar_1
       rect:
         serializedVersion: 2
-        x: 877
-        y: 438
-        width: 64
-        height: 62
+        x: 219
+        y: 109
+        width: 17
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,10 +166,10 @@ TextureImporter:
       name: ICON_Hard_Avatar_2
       rect:
         serializedVersion: 2
-        x: 885
-        y: 498
-        width: 99
-        height: 192
+        x: 220
+        y: 124
+        width: 28
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -9,11 +9,14 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource clickSound;
     [SerializeField] AudioSource winSound;
     [Header("BGM_Sound")]
+    float BGMVloume;
     [SerializeField] AudioSource BGM_Classic;
 
     private void Start()
     {
         inst = this;
+        BGMVloume = BGM_Classic.volume;
+        BGM_Classic.Play();
         PlayBGMSound();
     }
 
@@ -57,12 +60,10 @@ public class AudioManager : MonoBehaviour
     }
     void PlayBGMSound()
     {
-        BGM_Classic.loop = true;
-        BGM_Classic.Play();
+        BGM_Classic.volume = BGMVloume;
     }
     void StopPlayBGMSound()
     {
-        BGM_Classic.loop = false;
-        BGM_Classic.Stop();
+        BGM_Classic.volume = 0;
     }
 }

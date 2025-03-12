@@ -28,10 +28,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI GamePlay_TEXT_Score;
     [SerializeField] Button GamePlay_BT_Pause;
+    [SerializeField] Image IMG_BlockPressButton;
+    [SerializeField] TextMeshProUGUI TEXT_TimeUp;
 
     [Header("Finish")]
     [SerializeField] Canvas Canvas_Finish;
-    [SerializeField] TextMeshProUGUI Finish_TEXT_FinishTitle;
     [SerializeField] TextMeshProUGUI Finish_TEXT_Score;
     [SerializeField] Button Finish_BT_Restart;
     [SerializeField] Button Finish_BT_MainMenu;
@@ -42,10 +43,8 @@ public class GameManager : MonoBehaviour
     [Header("Pause")]
     [SerializeField] Canvas Canvas_Pause;
     [SerializeField] Button Pause_BT_SFX;
-    [SerializeField] Image Pause_IMG_BT_SFX;
 
     [SerializeField] Button Pause_BT_BGM;
-    [SerializeField] Image Pause_IMG_BT_BGM;
 
     [SerializeField] Sprite ICON_MuteSFX;
     [SerializeField] Sprite ICON_PlaySFX;
@@ -77,7 +76,6 @@ public class GameManager : MonoBehaviour
         AddListenerToBT();
         HideUI();
     }
-
     void AddListenerToBT()
     {
         GamePlay_BT_Pause.onClick.AddListener(OnClickGamePlay_BT_Pause);
@@ -135,7 +133,8 @@ public class GameManager : MonoBehaviour
         TimeManager.inst.StartTimer();
         GamePlay_TEXT_Score.text = "Score : " + score.ToString();
         Canvas_GamePlay.gameObject.SetActive(true);
-
+        TEXT_TimeUp.transform.localScale = Vector3.zero;
+        IMG_BlockPressButton.gameObject.SetActive(false);
     }
     void ContinueGame()
     {
@@ -145,6 +144,8 @@ public class GameManager : MonoBehaviour
         ClearGameSlotList();
         RandomAnswer();
         Canvas_GamePlay.gameObject.SetActive(true);
+        TEXT_TimeUp.transform.localScale = Vector3.zero;
+        IMG_BlockPressButton.gameObject.SetActive(false);
     }
     void SetAnswerCount()
     {
@@ -357,9 +358,17 @@ public class GameManager : MonoBehaviour
 
     public void TimeOut()
     {
-        Finish_TEXT_FinishTitle.text = "Time Out!!!";
-        Finish_TEXT_Score.text = "Score : " + score.ToString();
-        Canvas_Finish.gameObject.SetActive(true);
+        GRP_InputGroup_1.EnableBT_InputList(false);
+        IMG_BlockPressButton.gameObject.SetActive(true);
+        Sequence timeUpSequence = DOTween.Sequence();
+        timeUpSequence.Append(TEXT_TimeUp.gameObject.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InOutSine));
+        timeUpSequence.Append(TEXT_TimeUp.gameObject.transform.DOScale(Vector3.one, 2.0f));
+        timeUpSequence.OnComplete(() =>
+        {
+            Finish_TEXT_Score.text = "Score : " + score.ToString();
+            Canvas_Finish.gameObject.SetActive(true);
+        });
+
     }
     #endregion
 
@@ -367,7 +376,16 @@ public class GameManager : MonoBehaviour
     {
         Canvas_Pause.gameObject.SetActive(true);
         TimeManager.inst.StopTime();
+        IsOpenEggTab(true);
         InitializeCanvas_Pause();
+        AudioManager.inst.PlayClickSound();
+    }
+    void IsOpenEggTab(bool isOpen)
+    {
+        for(int i = 0; i <= round - 1; i++)
+        {
+            gameSlotList[i].GetComponent<GameSlot>().IsOpenEggTab(isOpen);
+        }
     }
     void InitializeCanvas_Pause()
     {
@@ -377,21 +395,22 @@ public class GameManager : MonoBehaviour
     void SetIMG_BT_SFX(bool isMuteSFXSound)
     {
         if (isMuteSFXSound == true)
-            Pause_IMG_BT_SFX.sprite = ICON_MuteSFX;
+            Pause_BT_SFX.image.sprite = ICON_MuteSFX;
         else
-            Pause_IMG_BT_SFX.sprite = ICON_PlaySFX;
+            Pause_BT_SFX.image.sprite = ICON_PlaySFX;
     }
     void SetIMG_BT_BGM(bool isMuteBGMSound)
     {
         if (isMuteBGMSound == true)
-            Pause_IMG_BT_BGM.sprite = ICON_MuteBGM;
+            Pause_BT_BGM.image.sprite = ICON_MuteBGM;
         else
-            Pause_IMG_BT_BGM.sprite = ICON_PlayBGM;
+            Pause_BT_BGM.image.sprite = ICON_PlayBGM;
     }
     void OnClickPause_BT_SFX()
     {
         bool isMuteSFXSound = AudioManager.inst.ToggleMuteSFXSound();
         SetIMG_BT_SFX(isMuteSFXSound);
+        AudioManager.inst.PlayClickSound();
     }
     void OnClickPause_BT_BGM()
     {
@@ -403,6 +422,8 @@ public class GameManager : MonoBehaviour
     {
         Canvas_Pause.gameObject.SetActive(false);
         TimeManager.inst.ContinueTime();
+        IsOpenEggTab(false);
+        AudioManager.inst.PlayClickSound();
     }
     void OnClickBTRestart()
     {
@@ -410,6 +431,7 @@ public class GameManager : MonoBehaviour
         Canvas_Pause.gameObject.SetActive(false);
         ResetScore();
         StartGame(gameMode);
+        AudioManager.inst.PlayClickSound();
     }
     void OnClickBT_MainMenu()
     {
@@ -418,10 +440,12 @@ public class GameManager : MonoBehaviour
         Canvas_Pause.gameObject.SetActive(false);
         ResetScore();
         MainMenuManager.inst.GoToMainMenu();
+        AudioManager.inst.PlayClickSound();
     }
     void OnClickFinish_BT_Trophy()
     {
         Canvas_ScoreBoard.gameObject.SetActive(true);
+        AudioManager.inst.PlayClickSound();
     }
     void ResetScore()
     {

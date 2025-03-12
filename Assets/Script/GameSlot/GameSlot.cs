@@ -110,4 +110,15 @@ public class GameSlot : MonoBehaviour
             }
         }
     }
+    public void IsOpenEggTab(bool isOpen)
+    {
+        if(isOpen == true)
+        {
+            IMG_EggTab.gameObject.transform.localScale = Vector3.one;
+        }
+        else
+        {
+            IMG_EggTab.gameObject.transform.localScale = new Vector3(0, 1.0f,0);
+        }
+    }
 }

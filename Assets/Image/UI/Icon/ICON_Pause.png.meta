@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9babeb00434a3334384ea2b08f316862
+guid: e9b49f10c57b7cc4e8ae936ee54425fd
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -119,10 +119,10 @@ TextureImporter:
       name: ICON_Pause_0
       rect:
         serializedVersion: 2
-        x: 47
-        y: 33
-        width: 181
-        height: 446
+        x: 22
+        y: 15
+        width: 93
+        height: 226
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,10 +141,10 @@ TextureImporter:
       name: ICON_Pause_1
       rect:
         serializedVersion: 2
-        x: 284
-        y: 33
-        width: 181
-        height: 446
+        x: 141
+        y: 15
+        width: 92
+        height: 226
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
