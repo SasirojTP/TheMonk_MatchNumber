@@ -112,7 +112,8 @@ public class GameSlot : MonoBehaviour
     }
     public void IsOpenEggTab(bool isOpen)
     {
-        if(isOpen == true)
+        DOTween.Kill(IMG_EggTab.transform);
+        if (isOpen == true)
         {
             IMG_EggTab.gameObject.transform.localScale = Vector3.one;
         }

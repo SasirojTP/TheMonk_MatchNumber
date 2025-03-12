@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
         gameSlotList.Clear();
         foreach (Transform child in GRP_GameSlotList.transform)
         {
-            DOTween.KillAll(child);
+            //DOTween.KillAll(child);
             Destroy(child.gameObject);
         }
     }
@@ -349,16 +349,18 @@ public class GameManager : MonoBehaviour
         AudioManager.inst.PlayWinSound();
         GRP_InputGroup_1.EnableBT_InputList(false);
         CalculateScore();
+        GamePlay_BT_Pause.interactable = false;
         IMG_HideAnswer.gameObject.transform.DOMove(POS_HideAnswerPos.transform.position, 0.75f).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo).OnComplete(() =>
         {
             ContinueGame();
             GRP_InputGroup_1.EnableBT_InputList(true);
+            GamePlay_BT_Pause.interactable = true;
         });
     }
 
     public void TimeOut()
     {
-        GRP_InputGroup_1.EnableBT_InputList(false);
+        //GRP_InputGroup_1.EnableBT_InputList(false);
         IMG_BlockPressButton.gameObject.SetActive(true);
         Sequence timeUpSequence = DOTween.Sequence();
         timeUpSequence.Append(TEXT_TimeUp.gameObject.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InOutSine));
@@ -382,9 +384,19 @@ public class GameManager : MonoBehaviour
     }
     void IsOpenEggTab(bool isOpen)
     {
-        for(int i = 0; i <= round - 1; i++)
+        if (isOpen == true)
         {
-            gameSlotList[i].GetComponent<GameSlot>().IsOpenEggTab(isOpen);
+            for (int i = 0; i <= gameSlotList.Count - 1; i++)
+            {
+                gameSlotList[i].GetComponent<GameSlot>().IsOpenEggTab(true);
+            }
+        }
+        else
+        {
+            for (int i = 0; i <= round - 1; i++)
+            {
+                gameSlotList[i].GetComponent<GameSlot>().IsOpenEggTab(false);
+            }
         }
     }
     void InitializeCanvas_Pause()
