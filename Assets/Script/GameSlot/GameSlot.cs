@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 
@@ -29,11 +30,18 @@ public class GameSlot : MonoBehaviour
         inputCount = 0;
 
         PlayAnimationEggTab();
+        StartCoroutine(WaitForEnableBT_InputList(0.3f));
         SpawnGRP_InputSlot();
     }
     void PlayAnimationEggTab()
     {
-        IMG_EggTab.transform.DOScaleY(0,1.0f);
+        IMG_EggTab.transform.DOScaleY(0,0.5f);
+    }
+    IEnumerator WaitForEnableBT_InputList(float seconds)
+    {
+        GameManager.inst.EnableBT_InputList(false);
+        yield return new WaitForSeconds(seconds);
+        GameManager.inst.EnableBT_InputList(true);
     }
     void SpawnGRP_InputSlot()
     {

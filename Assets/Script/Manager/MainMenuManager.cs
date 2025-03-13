@@ -37,9 +37,9 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] Canvas Canvas_Credit;
     [SerializeField] Button Credit_BT_Back;
 
-    [Header("ScoreBoard")]
-    [SerializeField] Canvas Canvas_ScoreBoard;
-    [SerializeField] Button ScoreBoard_BT_Back;
+    [Header("HallOfFame")]
+    [SerializeField] Canvas Canvas_HallOfFame;
+    [SerializeField] Button HallOfFame_BT_Back;
 
     private void Start()
     {
@@ -53,7 +53,7 @@ public class MainMenuManager : MonoBehaviour
         Canvas_SelectLevel.gameObject.SetActive(false);
         Canvas_Settings.gameObject.SetActive(false);
         Canvas_Credit.gameObject.SetActive(false);
-        Canvas_ScoreBoard.gameObject.SetActive(false);
+        Canvas_HallOfFame.gameObject.SetActive(false);
     }
 
     void AddListenerTOBT()
@@ -73,7 +73,7 @@ public class MainMenuManager : MonoBehaviour
 
         Credit_BT_Back.onClick.AddListener(OnClickCredit_BT_Back);
 
-        ScoreBoard_BT_Back.onClick.AddListener(OnClickScoreBoard_BT_Back);
+        HallOfFame_BT_Back.onClick.AddListener(OnClickHallOfFame_BT_Back);
     }
 
     public void GoToMainMenu()
@@ -89,7 +89,7 @@ public class MainMenuManager : MonoBehaviour
     }
     void OnClickBT_Trophy()
     {
-        Canvas_ScoreBoard.gameObject.SetActive(true);
+        Canvas_HallOfFame.gameObject.SetActive(true);
         AudioManager.inst.PlayClickSound();
     }
     void OnClickBT_Setting()
@@ -175,9 +175,9 @@ public class MainMenuManager : MonoBehaviour
         Canvas_Settings.gameObject.SetActive(true);
         AudioManager.inst.PlayClickSound();
     }
-    void OnClickScoreBoard_BT_Back()
+    void OnClickHallOfFame_BT_Back()
     {
-        Canvas_ScoreBoard.gameObject.SetActive(false);
+        Canvas_HallOfFame.gameObject.SetActive(false);
         AudioManager.inst.PlayClickSound();
     }
     //void OnClickBT_Quit()

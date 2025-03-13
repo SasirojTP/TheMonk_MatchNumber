@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button Finish_BT_MainMenu;
 
     [SerializeField] Button Finish_BT_Trophy;
-    [SerializeField] Canvas Canvas_ScoreBoard;
+    [SerializeField] Canvas Canvas_HallOfFame;
 
     [Header("Pause")]
     [SerializeField] Canvas Canvas_Pause;
@@ -372,6 +372,11 @@ public class GameManager : MonoBehaviour
         });
 
     }
+
+    public void EnableBT_InputList(bool isEnable)
+    {
+        GRP_InputGroup_1.EnableBT_InputList(isEnable);
+    }
     #endregion
 
     void OnClickGamePlay_BT_Pause()
@@ -428,6 +433,7 @@ public class GameManager : MonoBehaviour
     {
         bool isMuteBGMSound = AudioManager.inst.ToggleMuteBGMSound();
         SetIMG_BT_BGM(isMuteBGMSound);
+        AudioManager.inst.PlayClickSound();
     }
 
     void OnClickPause_BT_Back()
@@ -456,7 +462,7 @@ public class GameManager : MonoBehaviour
     }
     void OnClickFinish_BT_Trophy()
     {
-        Canvas_ScoreBoard.gameObject.SetActive(true);
+        Canvas_HallOfFame.gameObject.SetActive(true);
         AudioManager.inst.PlayClickSound();
     }
     void ResetScore()

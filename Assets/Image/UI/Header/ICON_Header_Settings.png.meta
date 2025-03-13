@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: e01fb86e292c81e4eadfa43d83a67d2f
+guid: 203194e15edee2d4487aad9332a92828
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5115647886933775961
-    second: ICON_Hard_0
+      213: 3734344057838313200
+    second: ICON_Header_Settings_0
+  - first:
+      213: 2022685194759036574
+    second: ICON_Header_Settings_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ICON_Hard_0
+      name: ICON_Header_Settings_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 83
-        width: 228
-        height: 90
+        x: 60
+        y: 382
+        width: 904
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9565aa836ae6ef640800000000000000
-      internalID: 5115647886933775961
+      spriteID: 0fe1b8c922e03d330800000000000000
+      internalID: 3734344057838313200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICON_Header_Settings_1
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 627
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9edd0ec775021c10800000000000000
+      internalID: 2022685194759036574
       vertices: []
       indices: 
       edges: []
