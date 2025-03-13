@@ -119,10 +119,10 @@ TextureImporter:
       name: ICON_Pause_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 15
-        width: 93
-        height: 226
+        x: 46
+        y: 32
+        width: 183
+        height: 448
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,10 +141,10 @@ TextureImporter:
       name: ICON_Pause_1
       rect:
         serializedVersion: 2
-        x: 141
-        y: 15
-        width: 92
-        height: 226
+        x: 283
+        y: 32
+        width: 183
+        height: 448
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

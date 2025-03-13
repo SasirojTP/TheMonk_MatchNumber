@@ -116,10 +116,10 @@ TextureImporter:
       name: ICON_PlaySFX_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 7
-        width: 211
-        height: 242
+        x: 46
+        y: 15
+        width: 420
+        height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

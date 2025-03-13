@@ -116,10 +116,10 @@ TextureImporter:
       name: ICON_Medium_Avatar_0
       rect:
         serializedVersion: 2
-        x: 36
-        y: 44
-        width: 184
-        height: 167
+        x: 147
+        y: 181
+        width: 732
+        height: 661
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

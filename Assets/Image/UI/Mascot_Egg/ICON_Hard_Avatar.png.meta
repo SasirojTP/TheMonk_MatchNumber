@@ -122,10 +122,10 @@ TextureImporter:
       name: ICON_Hard_Avatar_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 45
-        width: 214
-        height: 165
+        x: 40
+        y: 183
+        width: 847
+        height: 657
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,10 +144,10 @@ TextureImporter:
       name: ICON_Hard_Avatar_1
       rect:
         serializedVersion: 2
-        x: 219
-        y: 109
-        width: 17
-        height: 16
+        x: 877
+        y: 438
+        width: 64
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,10 +166,10 @@ TextureImporter:
       name: ICON_Hard_Avatar_2
       rect:
         serializedVersion: 2
-        x: 220
-        y: 124
-        width: 28
-        height: 49
+        x: 884
+        y: 498
+        width: 101
+        height: 193
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

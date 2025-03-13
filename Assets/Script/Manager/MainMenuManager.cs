@@ -41,6 +41,8 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] Canvas Canvas_HallOfFame;
     [SerializeField] Button HallOfFame_BT_Back;
 
+    [Header("BlockOrientation")]
+    [SerializeField] Canvas Canvas_BlockOrientation;
     private void Start()
     {
         inst = this;
@@ -74,6 +76,18 @@ public class MainMenuManager : MonoBehaviour
         Credit_BT_Back.onClick.AddListener(OnClickCredit_BT_Back);
 
         HallOfFame_BT_Back.onClick.AddListener(OnClickHallOfFame_BT_Back);
+    }
+
+    private void Update()
+    {
+        if(Screen.height > Screen.width)
+        {
+            Canvas_BlockOrientation.gameObject.SetActive(false);
+        }
+        else
+        {
+            Canvas_BlockOrientation.gameObject.SetActive(true);
+        }
     }
 
     public void GoToMainMenu()

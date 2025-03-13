@@ -116,10 +116,10 @@ TextureImporter:
       name: ICON_Easy_Avatar_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 51
-        width: 196
-        height: 155
+        x: 125
+        y: 204
+        width: 775
+        height: 615
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
