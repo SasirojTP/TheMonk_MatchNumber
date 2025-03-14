@@ -52,14 +52,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] Sprite ICON_PlayBGM;
 
     [SerializeField] Button Pause_BT_Back;
-    [SerializeField] Button Pause_BT_Restart;
     [SerializeField] Button Pause_BT_MainMenu;
 
-    public enum GameMode { Easy , Normal , Hard};
+    public enum GameMode { Easy , Medium , Hard};
     [Header("Logic")]
     public GameMode gameMode;
     [SerializeField] int baseScore_Easy;
-    [SerializeField] int baseScore_Normal;
+    [SerializeField] int baseScore_Medium;
     [SerializeField] int baseScore_Hard;
     int round;
     int answerCount;
@@ -83,7 +82,6 @@ public class GameManager : MonoBehaviour
         Pause_BT_SFX.onClick.AddListener(OnClickPause_BT_SFX);
         Pause_BT_BGM.onClick.AddListener(OnClickPause_BT_BGM);
         Pause_BT_Back.onClick.AddListener(OnClickPause_BT_Back);
-        Pause_BT_Restart.onClick.AddListener(OnClickBTRestart);
         Pause_BT_MainMenu.onClick.AddListener(OnClickBT_MainMenu);
 
         Finish_BT_Restart.onClick.AddListener(OnClickBTRestart);
@@ -154,7 +152,7 @@ public class GameManager : MonoBehaviour
             case GameMode.Easy:
                 answerCount = 3;
                 break;
-            case GameMode.Normal:
+            case GameMode.Medium:
                 answerCount = 4;
                 break;
             case GameMode.Hard:
@@ -193,17 +191,17 @@ public class GameManager : MonoBehaviour
                     answerList.Add(randomNumber.ToString());
                 }
                 break;
-            case GameMode.Normal:
-                bool isHaveSameNumber_hard_normal = false;
+            case GameMode.Medium:
+                bool isHaveSameNumber_hard_Medium = false;
                 for (int i = 0; i <= answerCount - 1; i++)
                 {
                     int randomNumber = 0;
-                    if (isHaveSameNumber_hard_normal == false)
+                    if (isHaveSameNumber_hard_Medium == false)
                     {
                         randomNumber = Random.Range(0, 4);
                         if (answerList.Contains(randomNumber.ToString()))
                         {
-                            isHaveSameNumber_hard_normal = true;
+                            isHaveSameNumber_hard_Medium = true;
                         }
                     }
                     else
@@ -317,8 +315,8 @@ public class GameManager : MonoBehaviour
             case GameMode.Easy:
                 additionScore = baseScore_Easy;
                 break;
-            case GameMode.Normal:
-                additionScore = baseScore_Normal;
+            case GameMode.Medium:
+                additionScore = baseScore_Medium;
                 break;
             case GameMode.Hard:
                 additionScore = baseScore_Hard;
@@ -362,6 +360,7 @@ public class GameManager : MonoBehaviour
     {
         //GRP_InputGroup_1.EnableBT_InputList(false);
         IMG_BlockPressButton.gameObject.SetActive(true);
+        AudioManager.inst.PlayTimeUpSound();
         Sequence timeUpSequence = DOTween.Sequence();
         timeUpSequence.Append(TEXT_TimeUp.gameObject.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InOutSine));
         timeUpSequence.Append(TEXT_TimeUp.gameObject.transform.DOScale(Vector3.one, 2.0f));
@@ -370,7 +369,6 @@ public class GameManager : MonoBehaviour
             Finish_TEXT_Score.text = "Score : " + score.ToString();
             Canvas_Finish.gameObject.SetActive(true);
         });
-
     }
 
     public void EnableBT_InputList(bool isEnable)
@@ -459,11 +457,13 @@ public class GameManager : MonoBehaviour
         ResetScore();
         MainMenuManager.inst.GoToMainMenu();
         AudioManager.inst.PlayClickSound();
+        AudioManager.inst.SetBGMSoundTo_BGM_Classic();
     }
     void OnClickFinish_BT_Trophy()
     {
         Canvas_HallOfFame.gameObject.SetActive(true);
         AudioManager.inst.PlayClickSound();
+        AudioManager.inst.SetBGMSoundTo_BGM_Classic();
     }
     void ResetScore()
     {

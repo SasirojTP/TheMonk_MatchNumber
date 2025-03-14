@@ -16,7 +16,7 @@ public class InputGroup : MonoBehaviour
             case GameManager.GameMode.Easy:
                 spawnButtonCount = 4;
                 break;
-            case GameManager.GameMode.Normal:
+            case GameManager.GameMode.Medium:
                 spawnButtonCount = 5;
                 break;
             case GameManager.GameMode.Hard:

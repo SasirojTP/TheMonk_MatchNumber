@@ -23,9 +23,15 @@ public class TimeManager : MonoBehaviour
         {
             timeRemining = timeRemining - Time.deltaTime;
             TEXT_Timer.text = Mathf.Floor(timeRemining).ToString();
+            if(timeRemining <= 5)
+            {
+                AudioManager.inst.SetBGMSoundTo_BGM_ClockSound();
+            }
             if (timeRemining < 1)
             {
                 GameManager.inst.TimeOut();
+                AudioManager.inst.PlayTimeUpSound();
+                AudioManager.inst.SetBGMSoundTo_BGM_Classic();
                 StopTime();
             }
         }

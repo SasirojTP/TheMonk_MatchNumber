@@ -127,7 +127,7 @@ public class MainMenuManager : MonoBehaviour
         Canvas_MainMenu.gameObject.SetActive(false);
         Canvas_SelectLevel.gameObject.SetActive(false);
         Canvas_GamePlay.gameObject.SetActive(true);
-        GameManager.inst.StartGame(GameManager.GameMode.Normal);
+        GameManager.inst.StartGame(GameManager.GameMode.Medium);
         AudioManager.inst.PlayClickSound();
     }
     void OnClickBT_Hard()
@@ -194,8 +194,4 @@ public class MainMenuManager : MonoBehaviour
         Canvas_HallOfFame.gameObject.SetActive(false);
         AudioManager.inst.PlayClickSound();
     }
-    //void OnClickBT_Quit()
-    //{
-    //    Application.Quit();
-    //}
 }

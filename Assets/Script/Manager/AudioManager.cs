@@ -6,17 +6,20 @@ public class AudioManager : MonoBehaviour
     [SerializeField] bool isMuteSFXSound = false;
     [SerializeField] bool isMuteBGMSound = false;
     [Header("SFX_Sound")]
-    [SerializeField] AudioSource clickSound;
-    [SerializeField] AudioSource winSound;
+    [SerializeField] AudioSource SFX_ClickSound;
+    [SerializeField] AudioSource SFX_WinSound;
+    [SerializeField] AudioSource SFX_TimeUpSound;
     [Header("BGM_Sound")]
-    float BGMVloume;
+    [SerializeField] AudioSource currentBGM;
     [SerializeField] AudioSource BGM_Classic;
+    [SerializeField] AudioSource BGM_ClockSound;
+    float BGMVloume;
 
     private void Start()
     {
         inst = this;
-        BGMVloume = BGM_Classic.volume;
-        BGM_Classic.Play();
+        SetBGMSoundTo_BGM_Classic();
+        currentBGM.Play();
         PlayBGMSound();
     }
 
@@ -37,12 +40,17 @@ public class AudioManager : MonoBehaviour
     public void PlayClickSound()
     {
         if(isMuteSFXSound == false)
-            clickSound.Play();
+            SFX_ClickSound.Play();
     }
     public void PlayWinSound()
     {
         if (isMuteSFXSound == false)
-            winSound.Play();
+            SFX_WinSound.Play();
+    }
+    public void PlayTimeUpSound()
+    {
+        if (isMuteSFXSound == false)
+            SFX_TimeUpSound.Play();
     }
     public bool ToggleMuteBGMSound()
     {
@@ -60,10 +68,20 @@ public class AudioManager : MonoBehaviour
     }
     void PlayBGMSound()
     {
-        BGM_Classic.volume = BGMVloume;
+        currentBGM.volume = BGMVloume;
     }
     void StopPlayBGMSound()
     {
-        BGM_Classic.volume = 0;
+        currentBGM.volume = 0;
+    }
+    public void SetBGMSoundTo_BGM_Classic()
+    {
+        currentBGM = BGM_Classic;
+        BGMVloume = BGM_Classic.volume;
+    }
+    public void SetBGMSoundTo_BGM_ClockSound()
+    {
+        currentBGM = BGM_ClockSound;
+        BGMVloume = BGM_ClockSound.volume;
     }
 }
