@@ -36,9 +36,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI Finish_TEXT_Score;
     [SerializeField] Button Finish_BT_Restart;
     [SerializeField] Button Finish_BT_MainMenu;
-
     [SerializeField] Button Finish_BT_Trophy;
-    [SerializeField] Canvas Canvas_HallOfFame;
 
     [Header("Pause")]
     [SerializeField] Canvas Canvas_Pause;
@@ -184,7 +182,8 @@ public class GameManager : MonoBehaviour
                 for (int i = 0; i <= answerCount - 1; i++)
                 {
                     int randomNumber = 0;
-                    while(answerList.Contains(randomNumber.ToString()))
+                    randomNumber = Random.Range(0, answerCount + 1);
+                    while (answerList.Contains(randomNumber.ToString()))
                     {
                         randomNumber = Random.Range(0, answerCount + 1);
                     }
@@ -461,7 +460,7 @@ public class GameManager : MonoBehaviour
     }
     void OnClickFinish_BT_Trophy()
     {
-        Canvas_HallOfFame.gameObject.SetActive(true);
+        SaveManager.inst.SpawnCanvas_HallOfFame();
         AudioManager.inst.PlayClickSound();
         AudioManager.inst.SetBGMSoundTo_BGM_Classic();
     }

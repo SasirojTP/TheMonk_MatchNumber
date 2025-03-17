@@ -21,7 +21,7 @@ public class BT_Input : MonoBehaviour
     void OnClickBT_Input()
     {
         GameManager.inst.SendDataToCurrentGameSlot(inputNumber);
-        AudioManager.inst.PlayClickSound();
+        AudioManager.inst.PlaySFX_ClickInputBT();
     }
     void SetIMG_Egg(int inputNumber)
     {

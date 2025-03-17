@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource SFX_ClickSound;
     [SerializeField] AudioSource SFX_WinSound;
     [SerializeField] AudioSource SFX_TimeUpSound;
+    [SerializeField] AudioSource SFX_ClickInputBT;
     [Header("BGM_Sound")]
     [SerializeField] AudioSource currentBGM;
     [SerializeField] AudioSource BGM_Classic;
@@ -19,8 +20,6 @@ public class AudioManager : MonoBehaviour
     {
         inst = this;
         SetBGMSoundTo_BGM_Classic();
-        currentBGM.Play();
-        PlayBGMSound();
     }
 
     public bool GetIsMuteSFXSound()
@@ -52,6 +51,11 @@ public class AudioManager : MonoBehaviour
         if (isMuteSFXSound == false)
             SFX_TimeUpSound.Play();
     }
+    public void PlaySFX_ClickInputBT()
+    {
+        if (isMuteSFXSound == false)
+            SFX_ClickInputBT.Play();
+    }
     public bool ToggleMuteBGMSound()
     {
         isMuteBGMSound = !isMuteBGMSound;
@@ -76,12 +80,18 @@ public class AudioManager : MonoBehaviour
     }
     public void SetBGMSoundTo_BGM_Classic()
     {
-        currentBGM = BGM_Classic;
+        currentBGM.clip = BGM_Classic.clip;
         BGMVloume = BGM_Classic.volume;
+
+        currentBGM.Play();
+        PlayBGMSound();
     }
     public void SetBGMSoundTo_BGM_ClockSound()
     {
-        currentBGM = BGM_ClockSound;
+        currentBGM.clip = BGM_ClockSound.clip;
         BGMVloume = BGM_ClockSound.volume;
+
+        currentBGM.Play();
+        PlayBGMSound();
     }
 }

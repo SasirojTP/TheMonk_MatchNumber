@@ -11,6 +11,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField] float maxTime = 60;
     float timeRemining;
     bool startTimer = false;
+    bool isPlayClockSound = false;
 
     private void Start()
     {
@@ -19,12 +20,17 @@ public class TimeManager : MonoBehaviour
 
     private void Update()
     {
+        Timer();
+    }
+    void Timer()
+    {
         if(startTimer)
         {
             timeRemining = timeRemining - Time.deltaTime;
             TEXT_Timer.text = Mathf.Floor(timeRemining).ToString();
-            if(timeRemining <= 5)
+            if(timeRemining <= 10 && isPlayClockSound == false)
             {
+                isPlayClockSound = true;
                 AudioManager.inst.SetBGMSoundTo_BGM_ClockSound();
             }
             if (timeRemining < 1)
@@ -41,6 +47,7 @@ public class TimeManager : MonoBehaviour
     {
         timeRemining = maxTime;
         startTimer = true;
+        isPlayClockSound = false;
     }
     public void ContinueTime()
     {

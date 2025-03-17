@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ICON_BG_EggyGame_0: -3181699567321021011
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

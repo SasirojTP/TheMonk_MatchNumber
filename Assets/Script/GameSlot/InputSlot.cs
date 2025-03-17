@@ -17,9 +17,9 @@ public class InputSlot : MonoBehaviour
     void SetEggAnimation()
     {
         IMG_Egg.rectTransform.localScale = new Vector3(0, 0, 0);
-        IMG_Egg.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetEase(Ease.InOutSine).OnComplete(() =>
+        IMG_Egg.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.3f).SetEase(Ease.InOutSine).OnComplete(() =>
         {
-            IMG_Egg.transform.DOScale(new Vector3(1, 1, 1), 0.2f).SetEase(Ease.InOutSine);
+            IMG_Egg.transform.DOScale(new Vector3(1, 1, 1), 0.1f).SetEase(Ease.InOutSine);
         });
     }
     

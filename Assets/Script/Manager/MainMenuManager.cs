@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,17 +38,13 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] Canvas Canvas_Credit;
     [SerializeField] Button Credit_BT_Back;
 
-    [Header("HallOfFame")]
-    [SerializeField] Canvas Canvas_HallOfFame;
-    [SerializeField] Button HallOfFame_BT_Back;
-
     [Header("BlockOrientation")]
     [SerializeField] Canvas Canvas_BlockOrientation;
     private void Start()
     {
         inst = this;
         HideUI();
-        AddListenerTOBT();
+        AddListenerToBT();
     }
 
     void HideUI()
@@ -55,10 +52,9 @@ public class MainMenuManager : MonoBehaviour
         Canvas_SelectLevel.gameObject.SetActive(false);
         Canvas_Settings.gameObject.SetActive(false);
         Canvas_Credit.gameObject.SetActive(false);
-        Canvas_HallOfFame.gameObject.SetActive(false);
     }
 
-    void AddListenerTOBT()
+    void AddListenerToBT()
     {
         BT_Play.onClick.AddListener(OnClickBT_Play);
         BT_Trophy.onClick.AddListener(OnClickBT_Trophy);
@@ -75,7 +71,6 @@ public class MainMenuManager : MonoBehaviour
 
         Credit_BT_Back.onClick.AddListener(OnClickCredit_BT_Back);
 
-        HallOfFame_BT_Back.onClick.AddListener(OnClickHallOfFame_BT_Back);
     }
 
     private void Update()
@@ -103,7 +98,7 @@ public class MainMenuManager : MonoBehaviour
     }
     void OnClickBT_Trophy()
     {
-        Canvas_HallOfFame.gameObject.SetActive(true);
+        SaveManager.inst.SpawnCanvas_HallOfFame();
         AudioManager.inst.PlayClickSound();
     }
     void OnClickBT_Setting()
@@ -187,11 +182,6 @@ public class MainMenuManager : MonoBehaviour
     {
         Canvas_Credit.gameObject.SetActive(false);
         Canvas_Settings.gameObject.SetActive(true);
-        AudioManager.inst.PlayClickSound();
-    }
-    void OnClickHallOfFame_BT_Back()
-    {
-        Canvas_HallOfFame.gameObject.SetActive(false);
         AudioManager.inst.PlayClickSound();
     }
 }

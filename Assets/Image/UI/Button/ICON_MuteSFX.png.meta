@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ICON_MuteSFX_0: 616981705227095214
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
