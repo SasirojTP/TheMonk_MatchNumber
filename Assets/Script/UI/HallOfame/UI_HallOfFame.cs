@@ -21,13 +21,15 @@ public class UI_HallOfFame : MonoBehaviour
 
     int pageIndex = 0;
     GameManager.GameMode scorePageGameMode;
+    bool isOpenFromFinishPage;
     Sequence header_HallOfFameSequence;
     bool isLastPlay;
     bool isOpenPageLastPlayGameMode;
     int lastPlayPlayerRank;
 
-    public void InitializeUI_HallOfFame()
+    public void InitializeUI_HallOfFame(bool IsOpenFromFinishPage)
     {
+        isOpenFromFinishPage = IsOpenFromFinishPage;
         AddListenerToBT();
         PlayAnimationIMG_Header_HallOfFame();
         SetPage();
@@ -106,7 +108,7 @@ public class UI_HallOfFame : MonoBehaviour
                 for (int i = 0; i < SaveManager.inst.GetEasy_Name_List().Count; i++)
                 {
                     prefab = Instantiate(GRP_PlayerDetail, GRP_PlayerList);
-                    if (isLastPlay == true && isOpenPageLastPlayGameMode == true && i == lastPlayPlayerRank - 1)
+                    if (isLastPlay == true && isOpenPageLastPlayGameMode == true && i == lastPlayPlayerRank - 1 && isOpenFromFinishPage == true)
                         prefab.GetComponent<GRP_PlayerDetail>().InitializeGRP_PlayerDetail(i + 1, SaveManager.inst.GetEasy_Name_List()[i], SaveManager.inst.GetEasy_Score_List()[i], true);
                     else
                         prefab.GetComponent<GRP_PlayerDetail>().InitializeGRP_PlayerDetail(i + 1, SaveManager.inst.GetEasy_Name_List()[i], SaveManager.inst.GetEasy_Score_List()[i], false);
@@ -116,7 +118,7 @@ public class UI_HallOfFame : MonoBehaviour
                 for (int i = 0; i < SaveManager.inst.GetMedium_Name_List().Count; i++)
                 {
                     prefab = Instantiate(GRP_PlayerDetail, GRP_PlayerList);
-                    if (isLastPlay == true && isOpenPageLastPlayGameMode == true && i == lastPlayPlayerRank - 1)
+                    if (isLastPlay == true && isOpenPageLastPlayGameMode == true && i == lastPlayPlayerRank - 1 && isOpenFromFinishPage == true)
                         prefab.GetComponent<GRP_PlayerDetail>().InitializeGRP_PlayerDetail(i + 1, SaveManager.inst.GetMedium_Name_List()[i], SaveManager.inst.GetMedium_Score_List()[i], true);
                     else
                         prefab.GetComponent<GRP_PlayerDetail>().InitializeGRP_PlayerDetail(i + 1, SaveManager.inst.GetMedium_Name_List()[i], SaveManager.inst.GetMedium_Score_List()[i], false);
@@ -126,14 +128,14 @@ public class UI_HallOfFame : MonoBehaviour
                 for (int i = 0; i < SaveManager.inst.GetHard_Name_List().Count; i++)
                 {
                     prefab = Instantiate(GRP_PlayerDetail, GRP_PlayerList);
-                    if (isLastPlay == true && isOpenPageLastPlayGameMode == true && i == lastPlayPlayerRank - 1)
+                    if (isLastPlay == true && isOpenPageLastPlayGameMode == true && i == lastPlayPlayerRank - 1 && isOpenFromFinishPage == true)
                         prefab.GetComponent<GRP_PlayerDetail>().InitializeGRP_PlayerDetail(i + 1, SaveManager.inst.GetHard_Name_List()[i], SaveManager.inst.GetHard_Score_List()[i], true);
                     else
                         prefab.GetComponent<GRP_PlayerDetail>().InitializeGRP_PlayerDetail(i + 1, SaveManager.inst.GetHard_Name_List()[i], SaveManager.inst.GetHard_Score_List()[i], false);
                 }
                 break;
         }
-        if(isLastPlay == true && isOpenPageLastPlayGameMode == true)
+        if(isLastPlay == true && isOpenPageLastPlayGameMode == true && isOpenFromFinishPage == true)
         {
             prefab = Instantiate(GRP_PlayerDetail, GRP_PlayerList);
             prefab.GetComponent<GRP_PlayerDetail>().InitializeGRP_PlayerDetail(SaveManager.inst.GetLastPlayData().playerRank, SaveManager.inst.GetLastPlayData().lastPlayPlayerName, SaveManager.inst.GetLastPlayData().lastPlayScore, true);
@@ -143,14 +145,17 @@ public class UI_HallOfFame : MonoBehaviour
     {
         pageIndex--;
         SetPage();
+        AudioManager.inst.PlayClickSound();
     }
     void OnClickBT_NextPage()
     {
         pageIndex++;
         SetPage();
+        AudioManager.inst.PlayClickSound();
     }
     void OnClickHallOfFame_BT_Back()
     {
+        AudioManager.inst.PlayClickSound();
         header_HallOfFameSequence.Kill();
         DOTween.Kill(IMG_Header_HallOfFame.transform);
         Destroy(this.gameObject);

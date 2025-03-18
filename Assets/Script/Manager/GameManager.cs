@@ -369,6 +369,7 @@ public class GameManager : MonoBehaviour
         {
             Finish_TEXT_Score.text = "Score : " + score.ToString();
             Canvas_Finish.gameObject.SetActive(true);
+            AudioManager.inst.PlayOpenFinishPageSound();
         });
     }
 
@@ -462,7 +463,7 @@ public class GameManager : MonoBehaviour
     }
     void OnClickFinish_BT_Trophy()
     {
-        SaveManager.inst.SpawnCanvas_HallOfFame();
+        SaveManager.inst.SpawnCanvas_HallOfFame(true);
         AudioManager.inst.PlayClickSound();
         AudioManager.inst.SetBGMSoundTo_BGM_Classic();
     }

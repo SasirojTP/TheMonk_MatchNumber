@@ -65,10 +65,10 @@ public class SaveManager : MonoBehaviour
         inst = this;
         LoadSave();
     }
-    public void SpawnCanvas_HallOfFame()
+    public void SpawnCanvas_HallOfFame(bool isOpenFromFinishPage)
     {
         Canvas canvas_HallOfFame = Instantiate(Canvas_HallOfFame);
-        canvas_HallOfFame.GetComponent<UI_HallOfFame>().InitializeUI_HallOfFame();
+        canvas_HallOfFame.GetComponent<UI_HallOfFame>().InitializeUI_HallOfFame(isOpenFromFinishPage);
     }
     public List<string> GetEasy_Name_List()
     {

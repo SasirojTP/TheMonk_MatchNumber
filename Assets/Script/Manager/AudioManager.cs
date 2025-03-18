@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource SFX_ClickSound;
     [SerializeField] AudioSource SFX_WinSound;
     [SerializeField] AudioSource SFX_TimeUpSound;
+    [SerializeField] AudioSource SFX_OpenFinishPageSound;
     [SerializeField] AudioSource SFX_ClickInputBT;
     [Header("BGM_Sound")]
     [SerializeField] AudioSource currentBGM;
@@ -50,6 +51,11 @@ public class AudioManager : MonoBehaviour
     {
         if (isMuteSFXSound == false)
             SFX_TimeUpSound.Play();
+    }
+    public void PlayOpenFinishPageSound()
+    {
+        if (isMuteSFXSound == false)
+            SFX_OpenFinishPageSound.Play();
     }
     public void PlaySFX_ClickInputBT()
     {

@@ -98,7 +98,7 @@ public class MainMenuManager : MonoBehaviour
     }
     void OnClickBT_Trophy()
     {
-        SaveManager.inst.SpawnCanvas_HallOfFame();
+        SaveManager.inst.SpawnCanvas_HallOfFame(false);
         AudioManager.inst.PlayClickSound();
     }
     void OnClickBT_Setting()
