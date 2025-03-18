@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 
@@ -26,6 +27,7 @@ public class UI_HallOfFame : MonoBehaviour
     bool isLastPlay;
     bool isOpenPageLastPlayGameMode;
     int lastPlayPlayerRank;
+    IEnumerator headerCoroutine;
 
     public void InitializeUI_HallOfFame(bool IsOpenFromFinishPage)
     {
@@ -51,12 +53,23 @@ public class UI_HallOfFame : MonoBehaviour
     {
         IMG_Header_HallOfFame.transform.localScale = Vector3.zero;
         header_HallOfFameSequence = DOTween.Sequence();
-        header_HallOfFameSequence.Append(IMG_Header_HallOfFame.gameObject.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 1f).SetEase(Ease.InOutSine));
+        header_HallOfFameSequence.Append(IMG_Header_HallOfFame.gameObject.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetEase(Ease.InOutSine));
         header_HallOfFameSequence.Append(IMG_Header_HallOfFame.gameObject.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InOutSine));
         header_HallOfFameSequence.OnComplete(() =>
         {
-            IMG_Header_HallOfFame.gameObject.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+            headerCoroutine = WaitForPlayLoopHeaderAnimation(5.0f);
+            StartCoroutine(headerCoroutine);
         });
+    }
+    IEnumerator WaitForPlayLoopHeaderAnimation(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        IMG_Header_HallOfFame.gameObject.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.InOutSine).OnComplete(() =>
+        {
+            headerCoroutine = WaitForPlayLoopHeaderAnimation(5.0f);
+            StartCoroutine(headerCoroutine);
+        });
+
     }
     void SetChangePageBT()
     {
@@ -156,6 +169,7 @@ public class UI_HallOfFame : MonoBehaviour
     void OnClickHallOfFame_BT_Back()
     {
         AudioManager.inst.PlayClickSound();
+        StopCoroutine(headerCoroutine);
         header_HallOfFameSequence.Kill();
         DOTween.Kill(IMG_Header_HallOfFame.transform);
         Destroy(this.gameObject);
