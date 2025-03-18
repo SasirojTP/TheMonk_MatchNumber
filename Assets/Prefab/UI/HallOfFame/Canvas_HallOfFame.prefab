@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92b6d09087aeb64c8af37fc1a84a3ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IMG_Header_HallOfFame: {fileID: 6381916970066829299}
   GRP_PlayerList: {fileID: 6192047416586232369}
   BT_PreviousPage: {fileID: 3520536797581884929}
   IMG_DifficultyPage: {fileID: 5294335301348248008}

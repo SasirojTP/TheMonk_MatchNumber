@@ -13,12 +13,12 @@ public class GRP_PlayerDetail : MonoBehaviour
     [SerializeField] TextMeshProUGUI TEXT_PlayerName;
     [SerializeField] TextMeshProUGUI TEXT_PlayerScore;
 
-    public void InitializeGRP_PlayerDetail(int playerRank, string playerName, int playerScore)
+    public void InitializeGRP_PlayerDetail(int playerRank, string playerName, int playerScore, bool isLastPlay)
     {
         SetPlayerRank(playerRank);
-        CheckIsYou(playerName);
         TEXT_PlayerName.text = playerName;
         TEXT_PlayerScore.text = playerScore.ToString();
+        SetActiveIMG_BG_You(isLastPlay);
     }
     void SetPlayerRank(int playerRank)
     {
@@ -42,9 +42,9 @@ public class GRP_PlayerDetail : MonoBehaviour
                 break;
         }
     }
-    void CheckIsYou(string playerName)
+    void SetActiveIMG_BG_You(bool isSetActive)
     {
-        if(playerName == "You")
+        if(isSetActive == true)
         {
             IMG_BG_You.gameObject.SetActive(true);
         }

@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI GamePlay_TEXT_Score;
     [SerializeField] Button GamePlay_BT_Pause;
     [SerializeField] Image IMG_BlockPressButton;
-    [SerializeField] TextMeshProUGUI TEXT_TimeUp;
+    [SerializeField] Image IMG_TimeUp;
 
     [Header("Finish")]
     [SerializeField] Canvas Canvas_Finish;
@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         TimeManager.inst.StartTimer();
         GamePlay_TEXT_Score.text = "Score : " + score.ToString();
         Canvas_GamePlay.gameObject.SetActive(true);
-        TEXT_TimeUp.transform.localScale = Vector3.zero;
+        IMG_TimeUp.transform.localScale = Vector3.zero;
         IMG_BlockPressButton.gameObject.SetActive(false);
     }
     void ContinueGame()
@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
         ClearGameSlotList();
         RandomAnswer();
         Canvas_GamePlay.gameObject.SetActive(true);
-        TEXT_TimeUp.transform.localScale = Vector3.zero;
+        IMG_TimeUp.transform.localScale = Vector3.zero;
         IMG_BlockPressButton.gameObject.SetActive(false);
     }
     void SetAnswerCount()
@@ -360,9 +360,11 @@ public class GameManager : MonoBehaviour
         //GRP_InputGroup_1.EnableBT_InputList(false);
         IMG_BlockPressButton.gameObject.SetActive(true);
         AudioManager.inst.PlayTimeUpSound();
+        SaveManager.inst.CalculateRank(SaveManager.inst.GetPlayerName(), score);
+
         Sequence timeUpSequence = DOTween.Sequence();
-        timeUpSequence.Append(TEXT_TimeUp.gameObject.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InOutSine));
-        timeUpSequence.Append(TEXT_TimeUp.gameObject.transform.DOScale(Vector3.one, 2.0f));
+        timeUpSequence.Append(IMG_TimeUp.gameObject.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InOutSine));
+        timeUpSequence.Append(IMG_TimeUp.gameObject.transform.DOScale(Vector3.one, 2.0f));
         timeUpSequence.OnComplete(() =>
         {
             Finish_TEXT_Score.text = "Score : " + score.ToString();
