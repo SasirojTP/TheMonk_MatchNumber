@@ -28,7 +28,7 @@ public class TimeManager : MonoBehaviour
         {
             timeRemining = timeRemining - Time.deltaTime;
             TEXT_Timer.text = Mathf.Floor(timeRemining).ToString();
-            if(timeRemining <= 10 && isPlayClockSound == false)
+            if(timeRemining <= 5 && isPlayClockSound == false)
             {
                 isPlayClockSound = true;
                 AudioManager.inst.SetBGMSoundTo_BGM_ClockSound();
