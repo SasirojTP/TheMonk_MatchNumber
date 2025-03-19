@@ -169,7 +169,10 @@ public class UI_HallOfFame : MonoBehaviour
     void OnClickHallOfFame_BT_Back()
     {
         AudioManager.inst.PlayClickSound();
-        StopCoroutine(headerCoroutine);
+        if(headerCoroutine != null)
+        {
+            StopCoroutine(headerCoroutine);
+        }
         header_HallOfFameSequence.Kill();
         DOTween.Kill(IMG_Header_HallOfFame.transform);
         Destroy(this.gameObject);

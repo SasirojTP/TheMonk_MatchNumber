@@ -116,10 +116,10 @@ TextureImporter:
       name: ICON_MuteSFX_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 13
-        width: 433
-        height: 486
+        x: 54
+        y: 29
+        width: 404
+        height: 454
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ICON_MuteSFX_0: 616981705227095214
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
