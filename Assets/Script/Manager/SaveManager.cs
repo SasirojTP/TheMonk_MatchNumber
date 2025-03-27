@@ -29,8 +29,10 @@ public class SaveManager : MonoBehaviour
     string keyName;
     string keyScore;
 
+    string keyIsPlayTutorial = "MatchNum_PlayTutorial";
+
     bool isLastPlay = false;
-    LastPlayData lastPlayData = new LastPlayData(GameManager.GameMode.Easy,-1, "" , 0);
+    LastPlayData lastPlayData = new LastPlayData(GameManager.GameMode.Easy, -1, "", 0);
 
     Dictionary<int, (string name, int score)> dataDict = new Dictionary<int, (string name, int score)>();
     Dictionary<int, (string name, int score)> sortDict = new Dictionary<int, (string name, int score)>();
@@ -63,6 +65,7 @@ public class SaveManager : MonoBehaviour
     private void Start()
     {
         inst = this;
+        //DeleteSaveData();
         LoadSave();
     }
     public void SpawnCanvas_HallOfFame(bool isOpenFromFinishPage)
@@ -108,7 +111,7 @@ public class SaveManager : MonoBehaviour
         hard_Score_List.Clear();
         for (int modeIndex = 0; modeIndex < 3; modeIndex++)
         {
-            switch(modeIndex)
+            switch (modeIndex)
             {
                 case 0:
                     mode = "_Easy";
@@ -224,7 +227,7 @@ public class SaveManager : MonoBehaviour
                 }
                 break;
         }
-        dataDict.Add(-1 , (playerName, playerScore));
+        dataDict.Add(-1, (playerName, playerScore));
 
         var sortData = dataDict.OrderByDescending(p => p.Value.score).ThenBy(p => p.Key).ThenBy(p => p.Value.name);
 
@@ -232,9 +235,9 @@ public class SaveManager : MonoBehaviour
         foreach (var data in sortData)
         {
             Debug.Log($"ID: {data.Key}, Name: {data.Value.name}, Score: {data.Value.score}");
-            sortDict.Add(lastPlayRank,(data.Value.name, data.Value.score));
+            sortDict.Add(lastPlayRank, (data.Value.name, data.Value.score));
             lastPlayRank++;
-            if(data.Value.name == playerName && data.Value.score == playerScore)
+            if (data.Value.name == playerName && data.Value.score == playerScore)
             {
                 SetLastPlayingData(GameManager.inst.gameMode, lastPlayRank, playerName, playerScore);
                 //SetLastPlayingData(GameManager.GameMode.Easy, lastPlayRank, playerName, playerScore);
@@ -261,7 +264,7 @@ public class SaveManager : MonoBehaviour
         }
         foreach (var data in sortDict)
         {
-            if(saveIndex < maxSaveDataCount)
+            if (saveIndex < maxSaveDataCount)
             {
                 keyName = keyPrefix + mode + "_Rank" + (saveIndex + 1).ToString() + "_Name";
                 keyScore = keyPrefix + mode + "_Rank" + (saveIndex + 1).ToString() + "_Score";
@@ -276,7 +279,7 @@ public class SaveManager : MonoBehaviour
         isLastPlay = true;
         lastPlayData = new LastPlayData(gameMode, playerRank, playerName, playerScore);
     }
-    
+
     public bool GetIsLastPlay()
     {
         return isLastPlay;
@@ -289,8 +292,25 @@ public class SaveManager : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
     }
+    public bool LoadIsPlayTutorial()
+    {
+        bool isPlayTutorial = false;
+        if (PlayerPrefs.HasKey(keyIsPlayTutorial))
+        {
+            isPlayTutorial = true;
+        }
+        else
+        {
+            PlayerPrefs.SetString(keyIsPlayTutorial, "AlreadyPlaytoturial");
+            PlayerPrefs.Save();
+            isPlayTutorial = false;
+        }
+        print(isPlayTutorial);
+        return isPlayTutorial;
+    }
 
     #region Ex_Key
+    //MatchNum_PlayTutorial
     //MatchNum_Easy_Rank1_Name
     //MatchNum_Easy_Rank1_Score
 

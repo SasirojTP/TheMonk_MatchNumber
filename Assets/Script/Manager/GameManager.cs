@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject GRP_AnswerEgg;
     [SerializeField] Image IMG_HideAnswer;
+    [SerializeField] Transform POS_StartHideAnswerPos;
     [SerializeField] Transform POS_HideAnswerPos;
 
     [SerializeField] GameObject GRP_GameSlotList;
@@ -30,6 +31,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button GamePlay_BT_Pause;
     [SerializeField] Image IMG_BlockPressButton;
     [SerializeField] Image IMG_TimeUp;
+
+    [Header("Tutorial")]
+    [SerializeField] Canvas Canvas_Tutorial;
 
     [Header("Finish")]
     [SerializeField] Canvas Canvas_Finish;
@@ -64,6 +68,7 @@ public class GameManager : MonoBehaviour
     List<GameObject> gameSlotList = new List<GameObject>();
     GameSlot currentGameSlot;
     int score = 0;
+    int spawnGRP_GameSlotCount = 0;
 
     void Start()
     {
@@ -121,12 +126,13 @@ public class GameManager : MonoBehaviour
     public void StartGame(GameMode GameMode)
     {
         gameMode = GameMode;
+        CheckIsPlayTutorial();
         SetAnswerCount();
         round = 0;
+        spawnGRP_GameSlotCount = 0;
         GRP_InputGroup_1.InitializeInputGroup();
         ClearGameSlotList();
         RandomAnswer();
-        TimeManager.inst.StartTimer();
         GamePlay_TEXT_Score.text = "Score : " + score.ToString();
         Canvas_GamePlay.gameObject.SetActive(true);
         IMG_TimeUp.transform.localScale = Vector3.zero;
@@ -136,12 +142,26 @@ public class GameManager : MonoBehaviour
     {
         SetAnswerCount();
         round = 0;
+        spawnGRP_GameSlotCount = 0;
         GRP_InputGroup_1.InitializeInputGroup();
         ClearGameSlotList();
         RandomAnswer();
         Canvas_GamePlay.gameObject.SetActive(true);
         IMG_TimeUp.transform.localScale = Vector3.zero;
         IMG_BlockPressButton.gameObject.SetActive(false);
+    }
+    void CheckIsPlayTutorial()
+    {
+        if(SaveManager.inst.LoadIsPlayTutorial() == false)
+        {
+            Canvas canvas_Tutorial = Instantiate(Canvas_Tutorial);
+            canvas_Tutorial.GetComponent<UI_Tutorial>().InitializeUI_Tutorial();
+            TimeManager.inst.StopTime();
+        }
+        else
+        {
+            TimeManager.inst.StartTimer();
+        }
     }
     void SetAnswerCount()
     {
@@ -271,9 +291,11 @@ public class GameManager : MonoBehaviour
 
     public void SpawnGRP_GameSlot()
     {
+        spawnGRP_GameSlotCount++;
         GameObject prefab = Instantiate(GameSlotPrefab);
         prefab.transform.SetParent(GRP_GameSlotList.transform);
         prefab.GetComponent<RectTransform>().localScale = Vector3.one;
+        prefab.GetComponent<GameSlot>().OnSpawnGameSlot(spawnGRP_GameSlotCount);
         gameSlotList.Add(prefab);
     }
     public void SetCurrentGameSlot()
@@ -347,8 +369,9 @@ public class GameManager : MonoBehaviour
         GRP_InputGroup_1.EnableBT_InputList(false);
         CalculateScore();
         GamePlay_BT_Pause.interactable = false;
-        IMG_HideAnswer.gameObject.transform.DOMove(POS_HideAnswerPos.transform.position, 0.75f).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo).OnComplete(() =>
+        IMG_HideAnswer.gameObject.transform.DOMove(POS_HideAnswerPos.transform.position, 0.75f).SetEase(Ease.InOutSine).OnComplete(() =>
         {
+            IMG_HideAnswer.gameObject.transform.position = POS_StartHideAnswerPos.position;
             ContinueGame();
             GRP_InputGroup_1.EnableBT_InputList(true);
             GamePlay_BT_Pause.interactable = true;

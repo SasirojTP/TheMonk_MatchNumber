@@ -60,7 +60,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX_ClickInputBT()
     {
         if (isMuteSFXSound == false)
-            SFX_ClickInputBT.Play();
+            SFX_ClickInputBT.PlayOneShot(SFX_ClickInputBT.clip);
     }
     public bool ToggleMuteBGMSound()
     {

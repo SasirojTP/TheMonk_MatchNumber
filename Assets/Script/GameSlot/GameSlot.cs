@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class GameSlot : MonoBehaviour
 {
@@ -21,13 +22,35 @@ public class GameSlot : MonoBehaviour
     List<GameObject> GRP_InputSlotList = new List<GameObject>();
 
     [SerializeField] GameObject IMG_EggTab;
+    [SerializeField] GameObject GRP_Spider;
+    [SerializeField] Image IMG_ShelfCrack_2;
 
+    public void OnSpawnGameSlot(int spawnGRP_GameSlotCount)
+    {
+        TEXT_Round.gameObject.SetActive(false);
+        if(spawnGRP_GameSlotCount >= 1 && spawnGRP_GameSlotCount <= 3)
+        {
+            IMG_ShelfCrack_2.gameObject.SetActive(true);
+            GRP_Spider.SetActive(false);
+        }
+        else if(spawnGRP_GameSlotCount >= 7)
+        {
+            IMG_ShelfCrack_2.gameObject.SetActive(false);
+            GRP_Spider.SetActive(true);
+        }
+        else
+        {
+            IMG_ShelfCrack_2.gameObject.SetActive(false);
+            GRP_Spider.SetActive(false);
+        }
+    }
     public void InitializeGameSlot(int AnswerCount ,List<string> AnswerList, int round)
     {
         answerCount = AnswerCount;
         answerList = AnswerList;
         TEXT_Round.text = round.ToString();
         inputCount = 0;
+        TEXT_Round.gameObject.SetActive(true);
 
         PlayAnimationEggTab();
         StartCoroutine(WaitForEnableBT_InputList(0.3f));
@@ -113,6 +136,10 @@ public class GameSlot : MonoBehaviour
                     if (checkAnswerList.Contains(inputList[i]))
                     {
                         GRP_InputSlotList[i].GetComponent<InputSlot>().SetIMG_StatusColor(Color.yellow);
+                    }
+                    else
+                    {
+                        GRP_InputSlotList[i].GetComponent<InputSlot>().SetIMG_StatusColor(Color.grey);
                     }
                     break;
             }
