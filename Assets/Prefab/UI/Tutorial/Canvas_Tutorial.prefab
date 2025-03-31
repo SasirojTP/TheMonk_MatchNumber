@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97fa00154fed51b4aaca78208292f88a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tutorial_BT_Back: {fileID: 4141920002903931319}
+  Tutorial_BT_GotIt: {fileID: 4141920002903931319}
 --- !u!223 &5212941914927405875
 Canvas:
   m_ObjectHideFlags: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8400823934714752294, guid: f900ed7e7da7b474886b378566d6bc6f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f900ed7e7da7b474886b378566d6bc6f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 3700365689528400255}
   - component: {fileID: 4141920002903931319}
   m_Layer: 5
-  m_Name: Tutorial_BT_Back
+  m_Name: Tutorial_BT_GotIt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,10 +226,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6721891914294653631}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -217.12, y: 192}
-  m_SizeDelta: {x: 255, y: 300}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 252.9}
+  m_SizeDelta: {x: 498.5792, y: 231.7614}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2874474623482235751
 CanvasRenderer:
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 4489101585109170847, guid: f54e519d2a5d33441bec74b9aa251524, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

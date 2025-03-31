@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] Canvas Canvas_GamePlay;
     [SerializeField] int minScroll = 0;
-    [SerializeField] int gameSlotHeight = 170;
+    [SerializeField] int gameSlotHeight = 367;
     [SerializeField] int maxScroll;
+    [SerializeField] int tuningSetMaxScroll = 4;
 
     [SerializeField] GameObject GRP_AnswerEgg;
     [SerializeField] Image IMG_HideAnswer;
@@ -106,7 +107,7 @@ public class GameManager : MonoBehaviour
 
     void OnUpdateScroll()
     {
-        if(round > 6)
+        if(round > 1)
         {
             if (GRP_GameSlotList_RectTransform.localPosition.y < minScroll)
             {
@@ -126,6 +127,7 @@ public class GameManager : MonoBehaviour
     public void StartGame(GameMode GameMode)
     {
         gameMode = GameMode;
+        maxScroll = 0;
         CheckIsPlayTutorial();
         SetAnswerCount();
         round = 0;
@@ -140,6 +142,7 @@ public class GameManager : MonoBehaviour
     }
     void ContinueGame()
     {
+        maxScroll = 0;
         SetAnswerCount();
         round = 0;
         spawnGRP_GameSlotCount = 0;
@@ -267,7 +270,7 @@ public class GameManager : MonoBehaviour
         print(answer);
 
         SetAnswer();
-        for(int i = 0; i <= 6; i++)
+        for(int i = 0; i <= 3; i++)
         {
             SpawnGRP_GameSlot();
         }
@@ -304,7 +307,7 @@ public class GameManager : MonoBehaviour
         currentGameSlot = gameSlotList[round - 1].GetComponent<GameSlot>();
         currentGameSlot.InitializeGameSlot(answerCount, answerList, round);
 
-        if (round >= 2)
+        if (round >= 4)
         {
             SetMaxScroll();
             ScrollToPosition(maxScroll);
@@ -313,7 +316,7 @@ public class GameManager : MonoBehaviour
 
     void SetMaxScroll()
     {
-        maxScroll = (round - 6) * gameSlotHeight;
+        maxScroll = (round - 3) * (gameSlotHeight - tuningSetMaxScroll);
     }
 
     void ScrollToPosition(int positionY)

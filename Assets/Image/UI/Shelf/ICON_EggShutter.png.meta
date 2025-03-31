@@ -116,10 +116,10 @@ TextureImporter:
       name: ICON_EggShutter_0
       rect:
         serializedVersion: 2
-        x: 70
-        y: 375
-        width: 883
-        height: 232
+        x: 26
+        y: 367
+        width: 970
+        height: 290
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

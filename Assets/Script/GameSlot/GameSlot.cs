@@ -8,14 +8,16 @@ using UnityEngine.UI;
 public class GameSlot : MonoBehaviour
 {
     [Header("Logic")]
-    int answerCount = 0;
     [SerializeField] List<string> answerList = new List<string>();
+    int answerCount = 0;
     int inputCount = 0;
     List<string> inputList = new List<string>();
     List<string> checkAnswerList = new List<string>();
+    [SerializeField] Sprite ICON_EggShelf_1;
+    [SerializeField] Sprite ICON_EggShelf_2;
 
-    [Header ("UI")]
-    [SerializeField] TextMeshProUGUI TEXT_Round;
+    [Header("UI")]
+    [SerializeField] Image IMG_BG_Slot;
     [SerializeField] GameObject GRP_InputSlotHolder;
 
     [SerializeField] GameObject GRP_InputSlotPrefab;
@@ -27,7 +29,14 @@ public class GameSlot : MonoBehaviour
 
     public void OnSpawnGameSlot(int spawnGRP_GameSlotCount)
     {
-        TEXT_Round.gameObject.SetActive(false);
+        if(spawnGRP_GameSlotCount <= 1)
+        {
+            IMG_BG_Slot.sprite = ICON_EggShelf_1;
+        }
+        else
+        {
+            IMG_BG_Slot.sprite = ICON_EggShelf_2;
+        }
         if(spawnGRP_GameSlotCount >= 1 && spawnGRP_GameSlotCount <= 3)
         {
             IMG_ShelfCrack_2.gameObject.SetActive(true);
@@ -48,9 +57,7 @@ public class GameSlot : MonoBehaviour
     {
         answerCount = AnswerCount;
         answerList = AnswerList;
-        TEXT_Round.text = round.ToString();
         inputCount = 0;
-        TEXT_Round.gameObject.SetActive(true);
 
         PlayAnimationEggTab();
         StartCoroutine(WaitForEnableBT_InputList(0.3f));

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 561079cce4d1f654a82d6dae233dbe39
+guid: a0955cbdc73c47646a73f27f0b485d73
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -809068005299139373
-    second: ICON_EggShelf_0
+      213: -540834911184010355
+    second: ICON_EggShelf_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ICON_EggShelf_0
+      name: ICON_EggShelf_2_0
       rect:
         serializedVersion: 2
-        x: 71
-        y: 349
-        width: 883
-        height: 326
+        x: 27
+        y: 328
+        width: 969
+        height: 368
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3dcc2019fec95c4f0800000000000000
-      internalID: -809068005299139373
+      spriteID: d834fb483819e78f0800000000000000
+      internalID: -540834911184010355
       vertices: []
       indices: 
       edges: []
