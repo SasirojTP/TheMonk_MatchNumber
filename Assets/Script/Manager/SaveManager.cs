@@ -65,7 +65,7 @@ public class SaveManager : MonoBehaviour
     private void Start()
     {
         inst = this;
-        DeleteSaveData();
+        //DeleteSaveData();
         LoadSave();
     }
     public void SpawnCanvas_HallOfFame(bool isOpenFromFinishPage)
