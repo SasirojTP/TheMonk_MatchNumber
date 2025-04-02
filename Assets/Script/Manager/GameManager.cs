@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -372,13 +373,18 @@ public class GameManager : MonoBehaviour
         GRP_InputGroup_1.EnableBT_InputList(false);
         CalculateScore();
         GamePlay_BT_Pause.interactable = false;
-        IMG_HideAnswer.gameObject.transform.DOMove(POS_HideAnswerPos.transform.position, 0.75f).SetEase(Ease.InOutSine).OnComplete(() =>
+        IMG_HideAnswer.gameObject.transform.DOMove(POS_HideAnswerPos.transform.position, 0.3f).SetEase(Ease.InOutSine).OnComplete(() =>
         {
-            IMG_HideAnswer.gameObject.transform.position = POS_StartHideAnswerPos.position;
-            ContinueGame();
-            GRP_InputGroup_1.EnableBT_InputList(true);
-            GamePlay_BT_Pause.interactable = true;
+            StartCoroutine(WaitForDisplayAnswer(0.7f));
         });
+    }
+    IEnumerator WaitForDisplayAnswer(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        IMG_HideAnswer.gameObject.transform.position = POS_StartHideAnswerPos.position;
+        ContinueGame();
+        GRP_InputGroup_1.EnableBT_InputList(true);
+        GamePlay_BT_Pause.interactable = true;
     }
 
     public void TimeOut()

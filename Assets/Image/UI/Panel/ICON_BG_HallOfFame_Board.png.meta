@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ICON_BG_HallOfFame_Board_0: 1348781611517503804
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

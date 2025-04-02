@@ -37,12 +37,18 @@ public class InputGroup : MonoBehaviour
             Destroy(child.gameObject);
         }
 
+        int randomSwitchEggHolderIndex = Random.Range(0, spawnButtonCount);
         for (int i = 0; i <= spawnButtonCount - 1; i++)
         {
             GameObject prefab = Instantiate(BT_InputPrefab);
             prefab.transform.SetParent(this.transform);
             prefab.GetComponent<RectTransform>().localScale = Vector3.one;
-            prefab.GetComponent<BT_Input>().InitializeBT_Input(i.ToString());
+
+            if(i == randomSwitchEggHolderIndex)
+                prefab.GetComponent<BT_Input>().InitializeBT_Input(i.ToString(),true);
+            else
+                prefab.GetComponent<BT_Input>().InitializeBT_Input(i.ToString(),false);
+
             BT_InputList.Add(prefab);
         }
     }

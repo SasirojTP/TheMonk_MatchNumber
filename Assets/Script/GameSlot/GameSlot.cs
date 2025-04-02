@@ -25,11 +25,11 @@ public class GameSlot : MonoBehaviour
 
     [SerializeField] GameObject IMG_EggTab;
     [SerializeField] GameObject GRP_Spider;
-    [SerializeField] Image IMG_ShelfCrack_2;
+    //[SerializeField] Image IMG_ShelfCrack_2;
 
     public void OnSpawnGameSlot(int spawnGRP_GameSlotCount)
     {
-        if(spawnGRP_GameSlotCount <= 1)
+        if (spawnGRP_GameSlotCount <= 1)
         {
             IMG_BG_Slot.sprite = ICON_EggShelf_1;
         }
@@ -37,19 +37,20 @@ public class GameSlot : MonoBehaviour
         {
             IMG_BG_Slot.sprite = ICON_EggShelf_2;
         }
-        if(spawnGRP_GameSlotCount >= 1 && spawnGRP_GameSlotCount <= 3)
+
+        if (spawnGRP_GameSlotCount >= 1 && spawnGRP_GameSlotCount <= 3)
         {
-            IMG_ShelfCrack_2.gameObject.SetActive(true);
+            //IMG_ShelfCrack_2.gameObject.SetActive(true);
             GRP_Spider.SetActive(false);
         }
         else if(spawnGRP_GameSlotCount >= 7)
         {
-            IMG_ShelfCrack_2.gameObject.SetActive(false);
+            //IMG_ShelfCrack_2.gameObject.SetActive(false);
             GRP_Spider.SetActive(true);
         }
         else
         {
-            IMG_ShelfCrack_2.gameObject.SetActive(false);
+            //IMG_ShelfCrack_2.gameObject.SetActive(false);
             GRP_Spider.SetActive(false);
         }
     }

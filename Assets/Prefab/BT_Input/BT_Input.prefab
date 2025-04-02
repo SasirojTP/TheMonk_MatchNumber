@@ -290,6 +290,9 @@ MonoBehaviour:
   inputNumber: 0
   IMG_Egg: {fileID: 342214192962365084}
   eggAsset: {fileID: 11400000, guid: a7157e2c1a03e934a89746813b983a95, type: 2}
+  IMG_EggHolder: {fileID: 2940654633348313653}
+  ICON_EggHolder_1: {fileID: -7965310802067030238, guid: 9753943c2b7d37b40a5655620a92f242, type: 3}
+  ICON_EggHolder_2: {fileID: -5622858357344981993, guid: 7af1c29e505b3654f9dadd91ad100dab, type: 3}
 --- !u!114 &332247483651803817
 MonoBehaviour:
   m_ObjectHideFlags: 0

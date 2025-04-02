@@ -116,10 +116,10 @@ TextureImporter:
       name: ICON_EggShelf_1_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 326
-        width: 983
-        height: 416
+        x: 22
+        y: 300
+        width: 980
+        height: 424
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
