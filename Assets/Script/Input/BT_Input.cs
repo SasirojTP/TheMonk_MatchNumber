@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using System.Collections;
 
 public class BT_Input : MonoBehaviour
@@ -34,7 +33,6 @@ public class BT_Input : MonoBehaviour
     {
         GameManager.inst.SendDataToCurrentGameSlot(inputNumber);
         AudioManager.inst.PlaySFX_ClickInputBT();
-        Handheld.Vibrate();
     }
     void SetIMG_Egg(int inputNumber)
     {
