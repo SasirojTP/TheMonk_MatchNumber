@@ -116,10 +116,10 @@ TextureImporter:
       name: ICON_Egg_5_0
       rect:
         serializedVersion: 2
-        x: 213
-        y: 72
-        width: 598
-        height: 881
+        x: 179
+        y: 66
+        width: 666
+        height: 891
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

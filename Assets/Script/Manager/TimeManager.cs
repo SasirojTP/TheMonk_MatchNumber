@@ -9,7 +9,7 @@ public class TimeManager : MonoBehaviour
 
     [Header("Logic")]
     [SerializeField] float maxTime = 60;
-    float timeRemining;
+    [SerializeField] float timeRemining;
     bool startTimer = false;
     bool isPlayClockSound = false;
 
@@ -42,7 +42,10 @@ public class TimeManager : MonoBehaviour
             }
         }
     }
-
+    public void SetMaxTime(float MaxTime)
+    {
+        maxTime = MaxTime;
+    }
     public void StartTimer()
     {
         timeRemining = maxTime;

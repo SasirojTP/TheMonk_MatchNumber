@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e170b3889e33a0e40be2acac0e496975
+guid: 127567f176176b148b704c35276f6a00
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4333469999188902725
-    second: ICON_Egg_2_0
+      213: 5443349963805630170
+    second: ICON_3_EggTray_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ICON_Egg_2_0
+      name: ICON_3_EggTray_0
       rect:
         serializedVersion: 2
-        x: 179
-        y: 66
-        width: 666
-        height: 891
+        x: 165
+        y: 302
+        width: 694
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bbc7885defb6cd3c0800000000000000
-      internalID: -4333469999188902725
+      spriteID: ade15c4b3f9aa8b40800000000000000
+      internalID: 5443349963805630170
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ICON_Egg_2_0: -4333469999188902725
+      ICON_3_EggTray_0: 5443349963805630170
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

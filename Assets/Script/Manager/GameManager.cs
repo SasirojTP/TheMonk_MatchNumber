@@ -20,19 +20,27 @@ public class GameManager : MonoBehaviour
     [SerializeField] int maxScroll;
     [SerializeField] int tuningSetMaxScroll = 4;
 
-    [SerializeField] GameObject GRP_AnswerEgg;
-    [SerializeField] Image IMG_HideAnswer;
-    [SerializeField] Transform POS_StartHideAnswerPos;
-    [SerializeField] Transform POS_HideAnswerPos;
-
-    [SerializeField] GameObject GRP_GameSlotList;
-    RectTransform GRP_GameSlotList_RectTransform;
-    [SerializeField] InputGroup GRP_InputGroup_1;
-
     [SerializeField] TextMeshProUGUI GamePlay_TEXT_Score;
     [SerializeField] Button GamePlay_BT_Pause;
     [SerializeField] Image IMG_BlockPressButton;
     [SerializeField] Image IMG_TimeUp;
+
+    [Header("UI_AnswerEgg")]
+    [SerializeField] GameObject GRP_AnswerEgg;
+    [SerializeField] HorizontalLayoutGroup HorizontalLayoutGroup_GRP_AnswerEgg;
+    [SerializeField] Image IMG_EggTray;
+    [SerializeField] Image IMG_HideAnswer;
+    [SerializeField] Transform POS_StartHideAnswerPos;
+    [SerializeField] Transform POS_HideAnswerPos;
+    [SerializeField] List<int> spacingInGRP_AnswerEgg = new List<int>();
+    [SerializeField] List<Sprite> ICON_EggCoverList = new List<Sprite>();
+    [SerializeField] List<Sprite> ICON_EggTrayList = new List<Sprite>();
+
+    [Header("UI_GameSlotList")]
+    [SerializeField] GameObject GRP_GameSlotList;
+    RectTransform GRP_GameSlotList_RectTransform;
+    [SerializeField] InputGroup GRP_InputGroup_1;
+
 
     [Header("Tutorial")]
     [SerializeField] Canvas Canvas_Tutorial;
@@ -61,6 +69,7 @@ public class GameManager : MonoBehaviour
     public enum GameMode { Easy , Medium , Hard};
     [Header("Logic")]
     public GameMode gameMode;
+    [SerializeField] List<float> maxTimePerMode = new List<float>();
     [SerializeField] int baseScore_Easy;
     [SerializeField] int baseScore_Medium;
     [SerializeField] int baseScore_Hard;
@@ -129,6 +138,7 @@ public class GameManager : MonoBehaviour
     {
         gameMode = GameMode;
         maxScroll = 0;
+        SetMaxTimeByMode();
         CheckIsPlayTutorial();
         SetAnswerCount();
         round = 0;
@@ -144,6 +154,7 @@ public class GameManager : MonoBehaviour
     void ContinueGame()
     {
         maxScroll = 0;
+        SetMaxTimeByMode();
         SetAnswerCount();
         round = 0;
         spawnGRP_GameSlotCount = 0;
@@ -153,6 +164,21 @@ public class GameManager : MonoBehaviour
         Canvas_GamePlay.gameObject.SetActive(true);
         IMG_TimeUp.transform.localScale = Vector3.zero;
         IMG_BlockPressButton.gameObject.SetActive(false);
+    }
+    void SetMaxTimeByMode()
+    {
+        switch (gameMode)
+        {
+            case GameMode.Easy:
+                TimeManager.inst.SetMaxTime(maxTimePerMode[0]);
+                break;
+            case GameMode.Medium:
+                TimeManager.inst.SetMaxTime(maxTimePerMode[1]);
+                break;
+            case GameMode.Hard:
+                TimeManager.inst.SetMaxTime(maxTimePerMode[2]);
+                break;
+        }
     }
     void CheckIsPlayTutorial()
     {
@@ -215,28 +241,16 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case GameMode.Medium:
-                bool isHaveSameNumber_hard_Medium = false;
                 for (int i = 0; i <= answerCount - 1; i++)
                 {
                     int randomNumber = 0;
-                    if (isHaveSameNumber_hard_Medium == false)
+                    randomNumber = Random.Range(0, answerCount + 1);
+                    while (answerList.Contains(randomNumber.ToString()))
                     {
-                        randomNumber = Random.Range(0, 4);
-                        if (answerList.Contains(randomNumber.ToString()))
-                        {
-                            isHaveSameNumber_hard_Medium = true;
-                        }
-                    }
-                    else
-                    {
-                        while (answerList.Contains(randomNumber.ToString()))
-                        {
-                            randomNumber = Random.Range(0, 4);
-                        }
+                        randomNumber = Random.Range(0, answerCount + 1);
                     }
                     answerList.Add(randomNumber.ToString());
                 }
-
                 break;
             case GameMode.Hard:
                 bool isHaveSameNumber_hard = false;
@@ -283,13 +297,34 @@ public class GameManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-
+        SetAnswerUiImage();
         foreach (var n in answerList)
         {
             GameObject answerEggPrefab = Instantiate(IMG_AnswerEggPrefab);
             answerEggPrefab.transform.SetParent(GRP_AnswerEgg.transform);
             answerEggPrefab.GetComponent<RectTransform>().localScale = Vector3.one;
             answerEggPrefab.GetComponent<AnswerEgg>().InitializeAnswerEgg(n);
+        }
+    }
+    void SetAnswerUiImage()
+    {
+        switch(gameMode)
+        {
+            case GameMode.Easy:
+                HorizontalLayoutGroup_GRP_AnswerEgg.spacing = spacingInGRP_AnswerEgg[0];
+                IMG_EggTray.sprite = ICON_EggTrayList[0];
+                IMG_HideAnswer.sprite = ICON_EggCoverList[0];
+                break;
+            case GameMode.Medium:
+                HorizontalLayoutGroup_GRP_AnswerEgg.spacing = spacingInGRP_AnswerEgg[1];
+                IMG_EggTray.sprite = ICON_EggTrayList[1];
+                IMG_HideAnswer.sprite = ICON_EggCoverList[1];
+                break;
+            case GameMode.Hard:
+                HorizontalLayoutGroup_GRP_AnswerEgg.spacing = spacingInGRP_AnswerEgg[2];
+                IMG_EggTray.sprite = ICON_EggTrayList[2];
+                IMG_HideAnswer.sprite = ICON_EggCoverList[2];
+                break;
         }
     }
 
