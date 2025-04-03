@@ -8935,21 +8935,21 @@ MonoBehaviour:
   - Leo
   - Eli
   - Ben
-  defaultScore_Easy_Score_List: f4010000c2010000400100009600000064000000
+  defaultScore_Easy_Score_List: bc02000044020000a40100002c010000aa000000
   defaultScore_Medium_Name_List:
   - Jay
   - Sam
   - Ash
   - Gus
   - Roy
-  defaultScore_Medium_Score_List: e803000084030000ee02000026020000f4010000
+  defaultScore_Medium_Score_List: d8040000380400005c030000bc020000c2010000
   defaultScore_Hard_Name_List:
   - Kit
   - Zac
   - Lee
   - Dan
   - Jay
-  defaultScore_Hard_Score_List: 78050000b0040000e803000090010000c8000000
+  defaultScore_Hard_Score_List: 4416000030110000100e0000c409000014050000
 --- !u!4 &1721634895
 Transform:
   m_ObjectHideFlags: 0
@@ -10491,12 +10491,12 @@ MonoBehaviour:
   Pause_BT_MainMenu: {fileID: 1967808995}
   gameMode: 0
   maxTimePerMode:
-  - 60
-  - 60
-  - 90
+  - 61
+  - 91
+  - 121
   baseScore_Easy: 100
   baseScore_Medium: 300
-  baseScore_Hard: 2000
+  baseScore_Hard: 1000
   answerList: []
 --- !u!1 &2007899421
 GameObject:

@@ -305,7 +305,6 @@ public class SaveManager : MonoBehaviour
             PlayerPrefs.Save();
             isPlayTutorial = false;
         }
-        print(isPlayTutorial);
         return isPlayTutorial;
     }
 
