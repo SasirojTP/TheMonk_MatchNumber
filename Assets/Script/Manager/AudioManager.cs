@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource currentBGM;
     [SerializeField] AudioSource BGM_Classic;
     [SerializeField] AudioSource BGM_ClockSound;
+    [SerializeField] AudioSource BGM_GamePlay;
     float BGMVloume;
 
     private void Start()
@@ -65,8 +66,12 @@ public class AudioManager : MonoBehaviour
     public bool ToggleMuteBGMSound()
     {
         isMuteBGMSound = !isMuteBGMSound;
-
-        if(isMuteBGMSound == true)
+        CheckPlayBGMSound();
+        return isMuteBGMSound;
+    }
+    void CheckPlayBGMSound()
+    {
+        if (isMuteBGMSound == true)
         {
             StopPlayBGMSound();
         }
@@ -74,7 +79,6 @@ public class AudioManager : MonoBehaviour
         {
             PlayBGMSound();
         }
-        return isMuteBGMSound;
     }
     void PlayBGMSound()
     {
@@ -86,18 +90,35 @@ public class AudioManager : MonoBehaviour
     }
     public void SetBGMSoundTo_BGM_Classic()
     {
+        if (currentBGM.clip == BGM_Classic.clip)
+            return;
+
         currentBGM.clip = BGM_Classic.clip;
         BGMVloume = BGM_Classic.volume;
 
         currentBGM.Play();
-        PlayBGMSound();
+        CheckPlayBGMSound();
     }
     public void SetBGMSoundTo_BGM_ClockSound()
     {
+        if (currentBGM.clip == BGM_ClockSound.clip)
+            return;
+
         currentBGM.clip = BGM_ClockSound.clip;
         BGMVloume = BGM_ClockSound.volume;
 
         currentBGM.Play();
-        PlayBGMSound();
+        CheckPlayBGMSound();
+    }
+    public void SetBGMSoundTo_BGM_GamePlay()
+    {
+        if (currentBGM.clip == BGM_GamePlay.clip)
+            return;
+
+        currentBGM.clip = BGM_GamePlay.clip;
+        BGMVloume = BGM_GamePlay.volume;
+
+        currentBGM.Play();
+        CheckPlayBGMSound();
     }
 }

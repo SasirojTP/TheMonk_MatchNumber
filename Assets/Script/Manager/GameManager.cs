@@ -150,6 +150,7 @@ public class GameManager : MonoBehaviour
         Canvas_GamePlay.gameObject.SetActive(true);
         IMG_TimeUp.transform.localScale = Vector3.zero;
         IMG_BlockPressButton.gameObject.SetActive(false);
+        AudioManager.inst.SetBGMSoundTo_BGM_GamePlay();
     }
     void ContinueGame()
     {
@@ -164,6 +165,7 @@ public class GameManager : MonoBehaviour
         Canvas_GamePlay.gameObject.SetActive(true);
         IMG_TimeUp.transform.localScale = Vector3.zero;
         IMG_BlockPressButton.gameObject.SetActive(false);
+        AudioManager.inst.SetBGMSoundTo_BGM_GamePlay();
     }
     void SetMaxTimeByMode()
     {

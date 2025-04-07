@@ -5,6 +5,21 @@ TextureImporter:
   - first:
       213: 8400823934714752294
     second: ICON_Panel_Tutorial_0
+  - first:
+      213: -8196052864349332389
+    second: ICON_Panel_Tutorial_1
+  - first:
+      213: -734176690759850426
+    second: ICON_Panel_Tutorial_2
+  - first:
+      213: -146913807826516252
+    second: ICON_Panel_Tutorial_3
+  - first:
+      213: -1106586013826984597
+    second: ICON_Panel_Tutorial_4
+  - first:
+      213: -8610954385295268195
+    second: ICON_Panel_Tutorial_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,10 +131,10 @@ TextureImporter:
       name: ICON_Panel_Tutorial_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1080
-        height: 1920
+        x: 51
+        y: 1082
+        width: 645
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,6 +145,116 @@ TextureImporter:
       bones: []
       spriteID: 62da541fbd8b59470800000000000000
       internalID: 8400823934714752294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICON_Panel_Tutorial_1
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 1081
+        width: 243
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5c922c2855c14e80800000000000000
+      internalID: -8196052864349332389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICON_Panel_Tutorial_2
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 760
+        width: 243
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64623e8803eafc5f0800000000000000
+      internalID: -734176690759850426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICON_Panel_Tutorial_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 760
+        width: 645
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e686ef8bae06fdf0800000000000000
+      internalID: -146913807826516252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICON_Panel_Tutorial_4
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 438
+        width: 645
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b655d6422ed94a0f0800000000000000
+      internalID: -1106586013826984597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICON_Panel_Tutorial_5
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 438
+        width: 243
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d96226ffb9ebf7880800000000000000
+      internalID: -8610954385295268195
       vertices: []
       indices: 
       edges: []
@@ -149,6 +274,11 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       ICON_Panel_Tutorial_0: 8400823934714752294
+      ICON_Panel_Tutorial_1: -8196052864349332389
+      ICON_Panel_Tutorial_2: -734176690759850426
+      ICON_Panel_Tutorial_3: -146913807826516252
+      ICON_Panel_Tutorial_4: -1106586013826984597
+      ICON_Panel_Tutorial_5: -8610954385295268195
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
