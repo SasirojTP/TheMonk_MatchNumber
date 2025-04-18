@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ICON_Eggy_SongKran_1_0: -2063124467217514920
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
